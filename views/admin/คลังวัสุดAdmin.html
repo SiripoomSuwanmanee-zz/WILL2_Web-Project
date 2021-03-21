@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- import bootstrap cdn-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+
+    <!-- import jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+        </script>
+
+    <!-- import popper.js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+        </script>
+
+    <!-- import javascript cdn -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+        </script>
+
+    <!-- CSS stylesheet -->
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+        }
+
+        #green {
+            height: 100%;
+            background: green;
+            text-align: center;
+            color: black;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- top navbar -->
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">IT durable good</a>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="#">Admin <i class="fa fa-search"></i></a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- This container contains the sidebar 
+			and main content of the page -->
+    <!-- h-100 takes the full height of the body-->
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <nav class="col-2 sidebar">
+
+                <!-- Navigation links in sidebar-->
+                <a href="#">คลังวัสดุ </a> <br />
+                <br />
+                <a href="#">รายการจ่ายวัสดุ</a><br />
+                <br />
+                <a href="#">รายการที่จ่ายเเล้ว</a><br />
+                <br />
+                <a href="#">ประวัติการจ่ายวัสดุ</a><br />
+                <br />
+            </nav>
+            <!--Contains the main content 
+					of the webpage-->
+            <div class="col-10" style="text-align: justify;">
+                <div class="h1 text-left mr-2">คลังวัสดุ
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                        data-target="#modalId1">จัดการวัสดุ</button>
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                        data-target="#modalId2">Import วัสดุ</button>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">อันดับ</th>
+                            <th scope="col">รหัสวัสดุ</th>
+                            <th scope="col">คำอธิบายวัสดุ</th>
+                            <th scope="col">หน่วยนับ</th>
+                            <th scope="col">จำนวนคงคลัง</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>101000061</td>
+                            <td>เครื่องเหลาดินสอ</td>
+                            <td>MAC</td>
+                            <td>56</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>101000062</td>
+                            <td>เชือกขาว ขนาด 1 กก.</td>
+                            <td>ROL</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>101000062</td>
+                            <td>เชือกขาว ขนาด 1 กก.</td>
+                            <td>ROL</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>101000062</td>
+                            <td>เชือกขาว ขนาด 1 กก.</td>
+                            <td>ROL</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>101000062</td>
+                            <td>เชือกขาว ขนาด 1 กก.</td>
+                            <td>ROL</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>101000062</td>
+                            <td>เชือกขาว ขนาด 1 กก.</td>
+                            <td>ROL</td>
+                            <td>12</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Modal จัดการวัสดุ -->
+                <div class="modal fade" id="modalId1" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">จัดการวัสดุ</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">รหัสวัสดุ:</label>
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="textinput" type="text" placeholder="1010000XX"
+                                            class="form-control input-md">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">ชื่อวัสดุ:</label>
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="textinput" type="text" placeholder="กระจกหกด้าน"
+                                            class="form-control input-md">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">จำนวน:</label>
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="textinput" type="number" placeholder="0"
+                                            class="form-control input-md">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">หน่วยนับ:</label>
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="textinput" type="text" placeholder="ROL"
+                                            class="form-control input-md">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                <button type="button" class="btn btn-primary">บันทึก</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal จัดการวัสดุ -->
+                <div class="modal fade" id="modalId2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Import วัสดุ</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- filebutton -->
+                                <label class="col-md-4 control-label">File Button</label>
+                                <div class="col-md-4">
+                                    <input id="filebutton" name="filebutton" class="input-file" type="file">
+                                </div>
+                                <!-- Textarea -->
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <br>
+                                        <textarea class="form-control" id="textarea"
+                                            name="textarea">default text</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
