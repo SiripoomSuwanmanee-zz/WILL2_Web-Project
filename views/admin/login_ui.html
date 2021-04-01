@@ -34,8 +34,10 @@
     <style>
         /* Fix background-color in web */
         body {
-            background: rgba(0, 153, 255, 0.623);
+            font-family: supermarket;
+            background: #DBE4E9;
             min-height: 100vh
+            
         }
 
         /* Fix text-color in card body */
@@ -76,31 +78,32 @@
 
 <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand navbar-dark bg-primary">
-        <div class="nav navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Home</a>
+    <nav class="navbar navbar-expand navbar-dark " style="height: 50px; background-color: #2B7AA0;" >
+        <div class="nav navbar-nav ">
+           
         </div>
     </nav>
 
     <!-- container -->
     <div class="container my-5">
-        <div class="justify-content-center align-self-center" style="background-color: white;">
+        <div class="justify-content-center align-self-center  shadow" style="background-color: white; border-radius: 30px;">
             <!--logo-->
-            <div class="text-center">
-                <img src="https://itschool.mfu.ac.th/fileadmin/templatesItschool/assets/img/it-logo120x120.png"
-                    class="img-fluid img-thumbnail" alt="...">
+            <div class="row">
+            <div class="col-12 text-center" style="margin-top: 100px;">
+                <img src="../../img/it-logo.png" alt="" width="20%">
+                    <class="img-fluid img-thumbnail" alt="...">
             </div>
-            <article class="card-body mx-auto" style="max-width:600px;">
+            <article class="card-body mx-auto " style="max-width:600px; height:400px;">
 
-                <h3 class="text-center">
+                <h2 class="justify-content-center text-center">
                     <label>ระบบเบิกวัสดุสำนักเทคโนโลยีสารสนเทศ</label>
+                    <br>
                     <label>(สำหรับผู้เข้าใช้งาน)</label>
-                </h3>
+                </h2>
 
                 <!--btn login-->
                 <div class="text-center">
-                    <button type="button" class="btn btn-primary btn-block my-3" id="btnLogin"> Login as google
+                    <button type="button" class="btn btn-primary btn-lg btn-block my-3" id="btnLogin"> Login as google
                 </button>
                 </div>
                 </form>
@@ -108,7 +111,7 @@
         </div>
     </div>
     </div>
-
+    
     <footer>
         
     </footer>
