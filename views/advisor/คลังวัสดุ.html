@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <link href="css/style.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.3/css/sb-admin-2.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.10.1/sweetalert2.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.10.1/sweetalert2.min.js"></script>
+
+    <!--Chart CDN-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.3.2/bootbox.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+
+    <!-- Load icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+    <!-- CSS stylesheet -->
+
+    <script>
+        $(document).ready(function () {
+            let dataSet = [
+                { codeDurable: 101000061 , name: "เครื่องเหลาดินสอ", unit: "MAC" ,remain: 56  },
+                { codeDurable: 101000062 , name: "เชือกขาว ขนาด 1 กก.", unit: "ROL" ,remain: 30  },
+                { codeDurable: 101000063 , name: "เชือกขาวแดง", unit: "ROL" ,remain: 20  },
+                { codeDurable: 101000064 , name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ", unit: "CAS" ,remain: 35  },
+                { codeDurable: 101000065 , name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ", unit: "CAS" ,remain:15  },
+                { codeDurable: 101000066 , name: "ซองจดหมายสีน้ำตาล C5", unit: "CAS" ,remain: 24  },
+                { codeDurable: 101000067 , name: "ซองพลาสติกเติมแฟ้มโชว์เอกสาร", unit: "PAC" ,remain: "56"  },
+                { codeDurable: 101000069 , name: "ซองสีน้ำตาล C4 (ขยายข้าง) มฟล.ภาษาไทย", unit: "CAS" ,remain: 26  },
+                { codeDurable: 101000070 , name: "ซองสีน้ำตาล C4 (ไม่ขยายข้าง) มฟล.ภาษาไทย", unit: "CAS" ,remain: 33  },
+                { codeDurable: 101000061 , name: "เครื่องเหลาดินสอ", unit: "MAC" ,remain: 56  },
+                { codeDurable: 101000062 , name: "เชือกขาว ขนาด 1 กก.", unit: "ROL" ,remain: 30  },
+                { codeDurable: 101000063 , name: "เชือกขาวแดง", unit: "ROL" ,remain: 20  },
+                { codeDurable: 101000064 , name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ", unit: "CAS" ,remain: 35  },
+                { codeDurable: 101000065 , name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ", unit: "CAS" ,remain:15  },
+                { codeDurable: 101000066 , name: "ซองจดหมายสีน้ำตาล C5", unit: "CAS" ,remain: 24  },
+                { codeDurable: 101000067 , name: "ซองพลาสติกเติมแฟ้มโชว์เอกสาร", unit: "PAC" ,remain: "56"  },
+                { codeDurable: 101000069 , name: "ซองสีน้ำตาล C4 (ขยายข้าง) มฟล.ภาษาไทย", unit: "CAS" ,remain: 26  },
+                { codeDurable: 101000070 , name: "ซองสีน้ำตาล C4 (ไม่ขยายข้าง) มฟล.ภาษาไทย", unit: "CAS" ,remain: 33  },              
+            ];
+
+            //Create
+            table = $("#infoTable").DataTable({
+
+                data: dataSet,
+                columns: [
+
+                    {
+                        render: function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }, title: "ลำดับ"
+                    },
+                    
+                    { data: "codeDurable", title: "รหัสวัสดุ" },
+                    { data: "name", title: "คำอธิบายวัสดุ" },
+                    { data: "unit", title: "หน่วยนับ"},
+                    { data: "remain", title: "จำนวนคงคลัง"} , 
+                ]
+            }); // REAR DATATABLE INIT
+
+        });
+
+
+    </script>
+
+    <style type="text/css">
+
+        body{
+            font-family: supermarket;
+        
+        }
+
+        .btn-blue{
+            background-color: #053B55;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .btn-blue:hover{
+            color: white;
+        }
+
+        .sidebar {
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            background-color: #ffffff;
+
+
+        }
+
+
+        .sidebar a {
+            display: block;
+            color: black;
+            padding: 16px;
+            text-decoration: none;
+            font-size: 16px;
+
+        }
+
+        .sidebar a.active {
+            background-color: #053B55;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .sidebar a:hover:not(.active) {
+
+            color: white;
+
+        }
+
+        @media screen and (max-width: 700px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .sidebar a {
+                float: left;
+            }
+
+            div.content {
+                margin-left: 0;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .sidebar a {
+                text-align: right;
+                float: none;
+            }
+        }
+
+        th{
+            font-size: 18px;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- top navbar -->
+    <nav class="navbar navbar-dark sticky-top shadow flex-md-nowrap mt-4 " style="background-color: #2B7AA0;">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
+            <h3>ระบบเบิกวัสดุสำนักเทคโนโลยีสารสนเทศ</h3>
+        </a>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="#">Admin <i class="far fa-bell ml-2"></i></a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="sidebar flex-md shadow" style="background-color: #DBE4E9">
+            <!-- menu -->
+            <li class="nav-item " style="margin-top: 50px;">
+                <a class="nav-link active" href="">
+                    <span>คลังวัสดุ</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <span>รายการจ่ายวัสดุ</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <span>รายการที่จ่ายเเล้ว</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <span>ประวัติการจ่ายวัสดุ</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin_history">
+                    <span>สถิติการเบิก</span>
+                </a>
+            </li>
+
+
+        </ul>
+        <!-- End of Topbar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="">
+            <div id="content" style="background-color:white">
+
+
+
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <div class="col-sm-12 col-lg-12 col-md-12 justify-content-center" style="margin-top: 5%;">
+                        <ul class="col-sm-3">
+                            <h3>คลังวัสดุ</h3>
+                        </ul>
+                        <div class="card col-xl-12 col-lg-12 mt-4">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered shadow table-striped" id="infoTable" width="100%"
+                                        cellspacing="0">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+      <!-- Modal จัดการวัสดุ -->
+      <div class="modal fade" id="modalManage" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">จัดการวัสดุ</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <!-- Text input-->
+                  <div class="form-group">
+                      <label class="col-md-4 control-label">รหัสวัสดุ:</label>
+                      <div class="col-md-4">
+                          <input id="textinput" name="textinput" type="text" placeholder="1010000XX"
+                              class="form-control input-md">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-md-4 control-label">ชื่อวัสดุ:</label>
+                      <div class="col-md-4">
+                          <input id="textinput" name="textinput" type="text" placeholder="กระจกหกด้าน"
+                              class="form-control input-md">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-md-4 control-label">จำนวน:</label>
+                      <div class="col-md-4">
+                          <input id="textinput" name="textinput" type="number" placeholder="0"
+                              class="form-control input-md">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-md-4 control-label">หน่วยนับ:</label>
+                      <div class="col-md-4">
+                          <input id="textinput" name="textinput" type="text" placeholder="ROL"
+                              class="form-control input-md">
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                  <button type="button" class="btn btn-primary">บันทึก</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Modal จัดการวัสดุ -->
+  <div class="modal fade" id="modalADD" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Import วัสดุ</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <!-- filebutton -->
+                  <label class="col-md-4 control-label">File Button</label>
+                  <div class="col-md-4">
+                      <input id="filebutton" name="filebutton" class="input-file" type="file">
+                  </div>
+                  <!-- Textarea -->
+                  <div class="form-group">
+                      <div class="col-md-4">
+                          <br>
+                          <textarea class="form-control" id="textarea"
+                              name="textarea">default text</textarea>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+
+ 
+
+</html>
