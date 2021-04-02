@@ -20,16 +20,24 @@ app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "login.ejs"));
 });
 
-app.get("/admin", function(req, res){
-    res.sendFile(path.join(__dirname, ("login(admin).ejs")));
+app.get("/admin login", function(req, res){
+    res.sendFile(path.join(__dirname, ("login_ui.html")));
 });
 
 app.get("/admin inventory", function(req, res){
-    res.sendFile(path.join(__dirname, "คลังวัสดุadmin.html"));
+    res.sendFile(path.join(__dirname, "คลังวัสดุAdmin.html"));
 });
 
-app.get("/admin request", function(res, req){
-    res.sendFile(path.join(__dirname, "รายการคำสั่งเบิก.html"));
+app.get("/admin history", function(req, res){
+    res.sendFile(path.join(__dirname, "ประวัติจ่ายวัสดุ.html"));
+});
+
+app.get("/admin list of resource was out", function(req, res){
+    res.sendFile(path.join(__dirname, "รายการจ่ายวัสดุ.html"));
+});
+
+app.get("/admin statistics", function(req, res){
+    res.sendFile(path.join(__dirname, "สถิติ.html"));
 });
 
 
