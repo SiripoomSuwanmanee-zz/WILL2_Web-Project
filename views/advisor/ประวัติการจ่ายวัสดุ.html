@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <!-- <link href="css/style.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.3/css/sb-admin-2.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - SB Admin</title>
+    <link href="/dist/css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
+        crossorigin="anonymous"></script>
 
     <!-- Jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
@@ -33,16 +38,8 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
-
-    <!-- Load icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- font awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-
-    <!-- CSS stylesheet -->
-
     <script>
-        $(document).ready(function () {
+         $(document).ready(function () {
             let dataSet = [
                 { list: "แผ่นยางรองตัด", name: 200132, date: "4/1/2021", time: "14:00" },
                 { list: "แผ่นใสสำหรับเขียน ", name: 200133, date: "1/2/2021", time: "14:00" },
@@ -65,7 +62,7 @@
             ];
 
             //Create
-            table = $("#infoTable").DataTable({
+            table = $("#dataTable").DataTable({
 
                 data: dataSet,
                 columns: [
@@ -79,256 +76,131 @@
                     { data: "list", title: "รายการ" },
                     { data: "name", title: "เอกสารการเบิก" },
                     { data: "date", title: "วันที่" },
-                    { data: "remain", title: "เวลา" },
+                    { data: "time", title: "เวลา" },
                 ]
-            }); // REAR DATATABLE INIT
-
+            });
         });
-
-
     </script>
 
-    <style type="text/css">
-        body {
-            font-family: supermarket;
-
-        }
-
-        .btn-blue {
-            background-color: #053B55;
-            color: white;
-            border-radius: 10px;
-        }
-
-        .btn-blue:hover {
-            color: white;
-        }
-
-        .sidebar {
-            margin: 0;
-            padding: 0;
-            width: 200px;
-            background-color: #ffffff;
-
-
-        }
-
-
-        .sidebar a {
-            display: block;
-            color: black;
-            padding: 16px;
-            text-decoration: none;
-            font-size: 16px;
-
-        }
-
-        .sidebar a.active {
-            background-color: #053B55;
-            color: white;
-            border-radius: 10px;
-        }
-
-        .sidebar a:hover:not(.active) {
-
-            color: white;
-
-        }
-
-        @media screen and (max-width: 700px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-
-            .sidebar a {
-                float: left;
-            }
-
-            div.content {
-                margin-left: 0;
-            }
-        }
-
-        @media screen and (max-width: 400px) {
-            .sidebar a {
-                text-align: right;
-                float: none;
-            }
-        }
-
-        th {
-            font-size: 18px;
-
-        }
-    </style>
 
 </head>
 
-<body>
-    <!-- top navbar -->
-    <nav class="navbar navbar-dark sticky-top shadow flex-md-nowrap mt-4 " style="background-color: #2B7AA0;">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
-            <h3>ระบบเบิกวัสดุสำนักเทคโนโลยีสารสนเทศ</h3>
-        </a>
-        <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Admin <i class="far fa-bell ml-2"></i></a>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0" href="#"></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group">
+
+                <div class="input-group-append">
+
+                </div>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false"></a>
+
+
             </li>
         </ul>
     </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="index.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Interface</div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts"
+                            aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Layouts
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                            aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                            Pages
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
+                            data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse"
+                                    data-target="#pagesCollapseAuth" aria-expanded="false"
+                                    aria-controls="pagesCollapseAuth">
+                                    Authentication
 
-        <!-- Sidebar -->
-        <ul class="sidebar flex-md shadow" style="background-color: #DBE4E9">
-            <!-- menu -->
-            <li class="nav-item " style="margin-top: 50px;">
-                <a class="nav-link active" href="">
-                    <span>คลังวัสดุ</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <span>รายการจ่ายวัสดุ</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <span>รายการที่จ่ายเเล้ว</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <span>ประวัติการจ่ายวัสดุ</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/admin_history">
-                    <span>สถิติการเบิก</span>
-                </a>
-            </li>
+                                </a>
 
-
-        </ul>
-        <!-- End of Topbar -->
-
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="">
-            <div id="content" style="background-color:white">
-
-
-
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-                    <div class="col-sm-12 col-lg-12 col-md-12 justify-content-center" style="margin-top: 5%;">
-                        <ul class="col-sm-3">
-                            <h3>ประวัติการจ่ายวัสดุ</h3>
-                        </ul>
-                        <div class="card col-xl-12 col-lg-12 mt-4">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered shadow table-striped" id="infoTable" width="100%"
-                                        cellspacing="0"> 
-                                    </table>
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse"
+                                    data-target="#pagesCollapseError" aria-expanded="false"
+                                    aria-controls="pagesCollapseError">
+                                    Error
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
+                                    data-parent="#sidenavAccordionPages">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="401.html">401 Page</a>
+                                        <a class="nav-link" href="404.html">404 Page</a>
+                                        <a class="nav-link" href="500.html">500 Page</a>
+                                    </nav>
                                 </div>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">Addons</div>
+                        <a class="nav-link" href="charts.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Charts
+                        </a>
+                        <a class="nav-link" href="tables.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Tables
+                        </a>
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table mr-1"></i>
+                            DataTable Example
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                                </table>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <!-- /.container-fluid -->
+            </main>
 
-            </div>
-            <!-- End of Main Content -->
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Modal จัดการวัสดุ -->
-    <div class="modal fade" id="modalManage" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">จัดการวัสดุ</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">รหัสวัสดุ:</label>
-                        <div class="col-md-4">
-                            <input id="textinput" name="textinput" type="text" placeholder="1010000XX"
-                                class="form-control input-md">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">ชื่อวัสดุ:</label>
-                        <div class="col-md-4">
-                            <input id="textinput" name="textinput" type="text" placeholder="กระจกหกด้าน"
-                                class="form-control input-md">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">จำนวน:</label>
-                        <div class="col-md-4">
-                            <input id="textinput" name="textinput" type="number" placeholder="0"
-                                class="form-control input-md">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">หน่วยนับ:</label>
-                        <div class="col-md-4">
-                            <input id="textinput" name="textinput" type="text" placeholder="ROL"
-                                class="form-control input-md">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                    <button type="button" class="btn btn-primary">บันทึก</button>
-                </div>
-            </div>
         </div>
     </div>
 
-    <!-- Modal จัดการวัสดุ -->
-    <div class="modal fade" id="modalADD" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Import วัสดุ</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- filebutton -->
-                    <label class="col-md-4 control-label">File Button</label>
-                    <div class="col-md-4">
-                        <input id="filebutton" name="filebutton" class="input-file" type="file">
-                    </div>
-                    <!-- Textarea -->
-                    <div class="form-group">
-                        <div class="col-md-4">
-                            <br>
-                            <textarea class="form-control" id="textarea" name="textarea">default text</textarea>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-
+</body>
 
 </html>
