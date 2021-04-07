@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <!-- <link href="css/style.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.3/css/sb-admin-2.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - SB Admin</title>
+    <link href="/dist/css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
+        crossorigin="anonymous"></script>
 
     <!-- Jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
@@ -34,193 +39,125 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
 
-    <!-- Load icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- font awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-
-    <!-- CSS stylesheet -->
-    <style type="text/css">
-        html,
-        body {
-            height: 100%;
-        }
-    </style>
 
 </head>
 
-<body>
-    <!-- top navbar -->
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">IT durable good</a>
-        <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Admin <i class="fa fa-search"></i></a>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0" href="#"></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group">
+
+                <div class="input-group-append">
+
+                </div>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false"></a>
+
+
             </li>
         </ul>
     </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="index.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Interface</div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts"
+                            aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Layouts
 
-    <!-- This container contains the sidebar 
-			and main content of the page -->
-    <!-- h-100 takes the full height of the body-->
-    <div class="container-fluid h-100">
-        <div class="row h-100">
-            <nav class="col-2 sidebar">
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                            aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                            Pages
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
+                            data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse"
+                                    data-target="#pagesCollapseAuth" aria-expanded="false"
+                                    aria-controls="pagesCollapseAuth">
+                                    Authentication
 
-                <!-- Navigation links in sidebar-->
-                <a href="#">คลังวัสดุ </a> <br />
-                <br />
-                <a href="#">รายการจ่ายวัสดุ</a><br />
-                <br />
-                <a href="#">รายการที่จ่ายเเล้ว</a><br />
-                <br />
-                <a href="#">ประวัติการจ่ายวัสดุ</a><br />
-                <br />
+                                </a>
+
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse"
+                                    data-target="#pagesCollapseError" aria-expanded="false"
+                                    aria-controls="pagesCollapseError">
+                                    Error
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
+                                    data-parent="#sidenavAccordionPages">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="401.html">401 Page</a>
+                                        <a class="nav-link" href="404.html">404 Page</a>
+                                        <a class="nav-link" href="500.html">500 Page</a>
+                                    </nav>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">Addons</div>
+                        <a class="nav-link" href="charts.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Charts
+                        </a>
+                        <a class="nav-link" href="tables.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Tables
+                        </a>
+                    </div>
+                </div>
+
             </nav>
-            <!--Contains the main content 
-					of the webpage-->
-            <div class="col-10" style="text-align: justify;">
-                <div class="h1 text-left mr-2">รายการจ่ายวัสดุ
-                </div>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">ชื่อ-นามสกุล</th>
-                            <th scope="col">รายการจ่าย</th>
-                            <th scope="col">วันที่</th>
-                            <th scope="col">สถานะ</th>
-                            <th scope="col">คำสั่ง</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">รศ.ดร. เฌอปราง อารีย์กุล </th>
-                            <td>1400361</td>
-                            <td>4/1/2021</td>
-                            <td>ไม่มีสถานะ</td>
-                            <td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
-                                    data-target="#modalId1">อนุมัติ</button>
-                                <button type="button" class="btn btn-danger btn-lg" data-toggle="modal"
-                                    data-target="#modalId2">ไม่อนุมัติ</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">รศ.ดร. เฌอปราง อารีย์กุล </th>
-                            <td>1400361</td>
-                            <td>4/1/2021</td>
-                            <td>ไม่มีสถานะ</td>
-                            <td><button type="button" class="btn btn-primary btn-lg">อนุมัติ</button>
-                                <button type="button" class="btn btn-danger btn-lg">ไม่อนุมัติ</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">รศ.ดร. เฌอปราง อารีย์กุล </th>
-                            <td>1400361</td>
-                            <td>4/1/2021</td>
-                            <td>ไม่มีสถานะ</td>
-                            <td><button type="button" class="btn btn-primary btn-lg">อนุมัติ</button>
-                                <button type="button" class="btn btn-danger btn-lg">ไม่อนุมัติ</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">รศ.ดร. เฌอปราง อารีย์กุล </th>
-                            <td>1400361</td>
-                            <td>4/1/2021</td>
-                            <td>ไม่มีสถานะ</td>
-                            <td><button type="button" class="btn btn-primary btn-lg">อนุมัติ</button>
-                                <button type="button" class="btn btn-danger btn-lg">ไม่อนุมัติ</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">รศ.ดร. เฌอปราง อารีย์กุล </th>
-                            <td>1400361</td>
-                            <td>4/1/2021</td>
-                            <td>ไม่มีสถานะ</td>
-                            <td><button type="button" class="btn btn-primary btn-lg">อนุมัติ</button>
-                                <button type="button" class="btn btn-danger btn-lg">ไม่อนุมัติ</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">รศ.ดร. เฌอปราง อารีย์กุล </th>
-                            <td>1400361</td>
-                            <td>4/1/2021</td>
-                            <td>ไม่มีสถานะ</td>
-                            <td><button type="button" class="btn btn-primary btn-lg">อนุมัติ</button>
-                                <button type="button" class="btn btn-danger btn-lg">ไม่อนุมัติ</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
         </div>
-        <!-- Modal -->
-        <div class="modal fade" id="modalId1" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">รายการจ่ายวัสดุ</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        อนุมัติละกัน
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="modalId2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">หมายเหตุ</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Multiple Radios -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="radios">Multiple Radios</label>
-                            <div class="col-md-4">
-                                <div class="radio">
-                                    <label for="radios-0">
-                                        <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
-                                        ยังไม่มีของในคลัง
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label for="radios-1">
-                                        <input type="radio" name="radios" id="radios-1" value="2">
-                                        ของชำรุด
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label for="radios-2">
-                                        <input type="radio" name="radios" id="radios-2" value="3">
-                                        ของหมด
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label for="radios-3">
-                                        <input type="radio" name="radios" id="radios-1" value="4">
-                                        อื่นๆ: <input type="text">
-                                    </label>
-                                </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table mr-1"></i>
+                            DataTable Example
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                                </table>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save</button>
-                        </div>
                     </div>
                 </div>
-            </div>
+            </main>
 
         </div>
+    </div>
+
 </body>
 
 </html>
