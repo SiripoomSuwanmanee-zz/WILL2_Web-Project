@@ -141,7 +141,13 @@
                 $("#modal_remain").html('');
                 $("modal_unit").html('');
             });
-
+            $("#savebtn").on('click', function () {
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
+            });
 
         });
 
@@ -204,7 +210,9 @@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer justify-content-center">
-                    <div class="small"><a class="nav-link" href="login_ui.html"><button class="btn btn-blue text-white text-lg"><i class="fas fa-door-open"></i> ออกจากระบบ </button></a> </div>
+                    <div class="small"><a class="nav-link" href="login_ui.html"><button
+                                class="btn btn-blue text-white text-lg"><i class="fas fa-door-open"></i> ออกจากระบบ
+                            </button></a> </div>
 
                 </div>
 
@@ -296,7 +304,8 @@
     </div>
 
     <!-- Modal ADD -->
-    <div class="modal fade bd-example-modal-xl" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal fade bd-example-modal-xl" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -335,7 +344,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button>
+                    <button type="button" class="btn btn-primary" id="savebtn" data-dismiss="modal">บันทึก</button>
                 </div>
             </div>
         </div>
