@@ -38,276 +38,240 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-
     <!-- CSS stylesheet -->
     <style type="text/css">
+        html,
         body {
-            font-family: supermarket;
-
-        }
-
-        .btn-blue {
-            background-color: #053B55;
-            color: white;
-            border-radius: 10px;
-        }
-
-        .btn-blue:hover {
-            color: white;
-        }
-
-        .sidebar {
-            margin: 0;
-            padding: 0;
-            width: 200px;
-            background-color: #ffffff;
-
-
-        }
-
-
-        .sidebar a {
-            display: block;
-            color: black;
-            padding: 16px;
-            text-decoration: none;
-            font-size: 16px;
-
-        }
-
-        .sidebar a.active {
-            background-color: #053B55;
-            color: white;
-            border-radius: 10px;
-        }
-
-        .sidebar a:hover:not(.active) {
-
-            color: white;
-
-        }
-
-        @media screen and (max-width: 700px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-
-            .sidebar a {
-                float: left;
-            }
-
-            div.content {
-                margin-left: 0;
-            }
-        }
-
-        @media screen and (max-width: 400px) {
-            .sidebar a {
-                text-align: right;
-                float: none; 
-            }
-        }
-
-        th {
-            font-size: 18px;
-
+            height: 100%;
         }
     </style>
 
     <script>
         $(document).ready(function () {
-            let dataSet = [
-                { name: "รศ.ดร.เฌอปราง อารีย์กุล", list: 1400361, date: "4/1/2021", status: "ไม่มี" },
-                { name: "นาย โทนี่  วูดเเมน", list: 1400362, date: "1/2/2021", status: "ไม่มี" },
-                { name: "อาจารย์ เเดง กีตาร์", list: 1400363, date: "3/3/2021", status: "ไม่มี" },
-                { name: "รศ.ดร.เฌอปราง อารีย์กุล", list: 1400364, date: "4/3/2021", status: "ไม่มี" },
-                { name: "นาย โทนี่  วูดเเมน", list: 1400365, date: "12/4/2021", status: "ไม่มี" },
-                { name: "อาจารย์ เเดง กีตาร์", list: 1400366, date: "13/4/2021", status: "ไม่มี" },
-                { name: "รศ.ดร.เฌอปราง อารีย์กุล", list: 1400367, date: "21/4/2021", status: "ไม่มี" },
-                { name: "นาย โทนี่  วูดเเมน", list: 1400368, date: "1/4/2021", status: "ไม่มี" },
-                { name: "อาจารย์ เเดง กีตาร์", list: 1400369, date: "3/5/2021", status: "ไม่มี" },
-                { name: "รศ.ดร.เฌอปราง อารีย์กุล", list: 1400370, date: "4/6/2021", status: "ไม่มี" },
-                { name: "นาย โทนี่  วูดเเมน", list: 1400371, date: "1/7/2021", status: "ไม่มี" },
-                { name: "อาจารย์ เเดง กีตาร์", list: 1400372, date: "3/7/2021", status: "ไม่มี" },
-                { name: "รศ.ดร.เฌอปราง อารีย์กุล", list: 1400373, date: "4/7/2021", status: "ไม่มี" },
-                { name: "นาย โทนี่  วูดเเมน", list: 1400374, date: "1/8/2021", status: "ไม่มี" },
-                { name: "อาจารย์ เเดง กีตาร์", list: 1400375, date: "3/8/2021", status: "ไม่มี" },
-            ];
-
-            //Create
-            table = $("#infoTable").DataTable({
-
-                data: dataSet,
-                columns: [
-
-                    {
-                        render: function (data, type, row, meta) {
-                            return meta.row + meta.settings._iDisplayStart + 1;
-                        }, title: "ลำดับ"
-                    },
-
-                    { data: "name", title: "ชื่อ-นามสกุล" },
-                    { data: "list", title: "รายการ" },
-                    { data: "date", title: "วันที่" },
-                    { data: "status", title: "สถานะ" },
-                ]
-            }); // REAR DATATABLE INIT
-
-        });
-
-
-        Highcharts.chart('container', {
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'World\'s largest cities per 2017'
-            },
-            subtitle: {
-                text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
-            },
-            xAxis: {
-                type: 'category',
-                labels: {
-                    rotation: -45,
-                    style: {
-                        fontSize: '13px',
-                        fontFamily: 'Verdana, sans-serif'
-                    }
-                }
-            },
-            yAxis: {
-                min: 0,
+            Highcharts.chart('container', {
+                chart: {
+                    type: 'column'
+                },
                 title: {
-                    text: 'Population (millions)'
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            tooltip: {
-                pointFormat: 'Population in 2017: <b>{point.y:.1f} millions</b>'
-            },
-            series: [{
-                name: 'Population',
-                data: [
-                    ['Shanghai', 24.2],
-                    ['Beijing', 20.8],
-                    ['Karachi', 14.9],
-                    ['Shenzhen', 13.7],
-                    ['Guangzhou', 13.1],
-                    ['Istanbul', 12.7],
-                    ['Mumbai', 12.4],
-                    ['Moscow', 12.2],
-                    ['São Paulo', 12.0],
-                    ['Delhi', 11.7],
-                    ['Kinshasa', 11.5],
-                    ['Tianjin', 11.2],
-                    ['Lahore', 11.1],
-                    ['Jakarta', 10.6],
-                    ['Dongguan', 10.6],
-                    ['Lagos', 10.6],
-                    ['Bengaluru', 10.3],
-                    ['Seoul', 9.8],
-                    ['Foshan', 9.3],
-                    ['Tokyo', 9.3]
-                ],
-                dataLabels: {
-                    enabled: true,
-                    rotation: -90,
-                    color: '#FFFFFF',
-                    align: 'right',
-                    format: '{point.y:.1f}', // one decimal
-                    y: 10, // 10 pixels down from the top
-                    style: {
-                        fontSize: '13px',
-                        fontFamily: 'Verdana, sans-serif'
+                    text: 'สถิติการเบิกมากที่สุด'
+                },
+                xAxis: {
+                    type: 'category',
+                    labels: {
+                        rotation: -45,
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
                     }
-                }
-            }]
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'จำนวน(อัน)'
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    pointFormat: 'จำนวนในการเบิก: <b>{point.y:.1f} อัน</b>'
+                },
+                series: [{
+                    name: 'Population',
+                    data: [
+                        ['เครื่องเหลาดินสอ', 30],
+                        ['เครื่องเหลาดินสอ', 30],
+                        ['เครื่องเหลาดินสอ', 30],
+                        ['เครื่องเหลาดินสอ', 30],
+                        ['เครื่องเหลาดินสอ', 30],
+                        ['เครื่องเหลาดินสอ', 30],
+                        ['เครื่องเหลาดินสอ', 30],
+                        ['เครื่องเหลาดินสอ', 30],
+                        ['เครื่องเหลาดินสอ', 30],
+                        ['เครื่องเหลาดินสอ', 30],
+                        ['เครื่องเหลาดินสอ', 30],
+                        ['เครื่องเหลาดินสอ', 30],
+                    ],
+                    dataLabels: {
+                        enabled: true,
+                        rotation: -90,
+                        color: '#FFFFFF',
+                        align: 'right',
+                        format: '{point.y:.1f}', // one decimal
+                        y: 10, // 10 pixels down from the top
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }]
+            });
         });
     </script>
 </head>
 
 <body>
     <!-- top navbar -->
-    <nav class="navbar navbar-dark sticky-top shadow flex-md-nowrap mt-4 " style="background-color: #2B7AA0;">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
-            <h3>ระบบเบิกวัสดุสำนักเทคโนโลยีสารสนเทศ</h3>
-        </a>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">IT durable good</a>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Admin <i class="far fa-bell ml-2"></i></a>
+                <a class="nav-link" href="#">Admin <i class="fa fa-search"></i></a>
             </li>
         </ul>
     </nav>
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+    <!-- This container contains the sidebar 
+			and main content of the page -->
+    <!-- h-100 takes the full height of the body-->
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <nav class="col-2 sidebar">
 
-        <!-- Sidebar -->
-        <ul class="sidebar flex-md shadow" style="background-color: #DBE4E9">
-            <!-- menu -->
-            <li class="nav-item " style="margin-top: 50px;">
-                <a class="nav-link active" href="">
-                    <span>คลังวัสดุ</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <span>รายการจ่ายวัสดุ</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <span>รายการที่จ่ายเเล้ว</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <span>ประวัติการจ่ายวัสดุ</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/admin_history">
-                    <span>สถิติการเบิก</span>
-                </a>
-            </li>
-
-
-        </ul>
-        <!-- End of Topbar -->
-
-        <!--Contains the main content of the webpage-->
-
-        <div class="col-10" style="text-align: justify;">
-            <div class="h1 text-left mr-2">สถิติการเบิกวัสดุ
+                <!-- Navigation links in sidebar-->
+                <a href="#">คลังวัสดุ </a> <br />
+                <br />
+                <a href="#">รายการจ่ายวัสดุ</a><br />
+                <br />
+                <a href="#">รายการที่จ่ายเเล้ว</a><br />
+                <br />
+                <a href="#">ประวัติการจ่ายวัสดุ</a><br />
+                <br />
+            </nav>
+            <!--Contains the main content 
+					of the webpage-->
+            <div class="col-10" style="text-align: justify;">
+                <div class="h1 text-left mr-2">สถิติการเบิกวัสดุ
+                </div>
+                <!-- chart -->
+                <figure class="highcharts-figure">
+                    <div id="container"></div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">อันดับ</th>
+                                <th scope="col">รหัสวัสดุ</th>
+                                <th scope="col">คำอธิบายวัสดุ</th>
+                                <th scope="col">หน่วยนับ</th>
+                                <th scope="col">จำนวนการเบิก</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1 </th>
+                                <td>101000061</td>
+                                <td>เครื่องเหลาดินสอ</td>
+                                <td>MAC</td>
+                                <td>30</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2 </th>
+                                <td>101000061</td>
+                                <td>เครื่องเหลาดินสอ</td>
+                                <td>MAC</td>
+                                <td>30</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2 </th>
+                                <td>101000061</td>
+                                <td>เครื่องเหลาดินสอ</td>
+                                <td>MAC</td>
+                                <td>30</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2 </th>
+                                <td>101000061</td>
+                                <td>เครื่องเหลาดินสอ</td>
+                                <td>MAC</td>
+                                <td>30</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2 </th>
+                                <td>101000061</td>
+                                <td>เครื่องเหลาดินสอ</td>
+                                <td>MAC</td>
+                                <td>30</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2 </th>
+                                <td>101000061</td>
+                                <td>เครื่องเหลาดินสอ</td>
+                                <td>MAC</td>
+                                <td>30</td>
+                            </tr>
+                        </tbody>
+                    </table>
             </div>
-            <!-- chart -->
-            <figure class="highcharts-figure">
-                <div id="container"></div>
-            </figure>
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
-                <div class="col-sm-12 col-lg-12 col-md-12 justify-content-center" style="margin-top: 5%;">
-                    <ul class="col-sm-3">
-                        <h3>รายการจ่ายวัสดุ</h3>
-                    </ul>
-                    <div class="card col-xl-12 col-lg-12 mt-4">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered shadow table-striped" id="infoTable" width="100%"
-                                    cellspacing="0">
-                                </table>
-                            </div>
-                        </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modalId1" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">รายการจ่ายวัสดุ</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        อนุมัติละกัน
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modalId2" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">หมายเหตุ</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Multiple Radios -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="radios">Multiple Radios</label>
+                            <div class="col-md-4">
+                                <div class="radio">
+                                    <label for="radios-0">
+                                        <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+                                        ยังไม่มีของในคลัง
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label for="radios-1">
+                                        <input type="radio" name="radios" id="radios-1" value="2">
+                                        ของชำรุด
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label for="radios-2">
+                                        <input type="radio" name="radios" id="radios-2" value="3">
+                                        ของหมด
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label for="radios-3">
+                                        <input type="radio" name="radios" id="radios-1" value="4">
+                                        อื่นๆ: <input type="text">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 </body>
 
 </html>
