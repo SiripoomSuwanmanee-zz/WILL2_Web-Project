@@ -141,7 +141,13 @@
                 $("#modal_remain").html('');
                 $("modal_unit").html('');
             });
-
+            $("#savebtn").on('click', function () {
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
+            });
 
         });
 
@@ -337,7 +343,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button>
+                    <button type="button" class="btn btn-primary" id="savebtn" data-dismiss="modal">บันทึก</button>
                 </div>
             </div>
         </div>
