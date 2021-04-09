@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Dashboard - SB Admin</title>
+    <title>User's resouce list</title>
     <link href="/dist/css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
         crossorigin="anonymous" />
@@ -38,6 +38,21 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <style>
+        body {
+            font-family: supermarket;
+        }
+
+        th {
+            background-color: #3FACCE;
+            color: white;
+            font-size: larger;
+        }
+
+        .btn-blue {
+            background-color: #004FAB;
+        }
+    </style>
     <script>
         $(document).ready(function () {
             let dataSet = [
@@ -91,6 +106,13 @@
                     }
                 ]
             });
+            $("#addbtn").on('click', function () {
+                Swal.fire(
+                    'เพื่มรายการเรียบร้อย!',
+                    ' ',
+                    'success'
+                )
+            });
 
         });
 
@@ -99,8 +121,9 @@
 </head>
 
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+    <nav class="sb-topnav navbar navbar-expand " style="background-color: #2B7AA0;">
+        <img src="../../img/it-logo.png" alt="" style="width: 50px;">
+        <a class="navbar-brand text-white" href="">ระบบเบิกวัสดุสำนักเทคโนโลยีสารสนเทศ</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0" href="#"></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -116,8 +139,6 @@
             <li class="nav-item dropdown">
                 <a class="nav-link" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false"></a>
-
-
             </li>
         </ul>
     </nav>
@@ -126,83 +147,53 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
+                        <div class="sb-sidenav-menu-heading">MENU</div>
+                        <a class="nav-link active" href="Admin's resource list.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
+                            คลังวัสดุ
                         </a>
-                        <div class="sb-sidenav-menu-heading">Interface</div>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts"
-                            aria-expanded="false" aria-controls="collapseLayouts">
+
+                        <a class="nav-link" href="Admin's paid list.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Layouts
+                            รายการร้องขอวัสดุ
 
                         </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                            data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
-                            </nav>
-                        </div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                             aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Pages
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
-                            data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse"
-                                    data-target="#pagesCollapseAuth" aria-expanded="false"
-                                    aria-controls="pagesCollapseAuth">
-                                    Authentication
+                            ประวัติการจ่ายวัสดุ
 
-                                </a>
+                        </a>
 
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse"
-                                    data-target="#pagesCollapseError" aria-expanded="false"
-                                    aria-controls="pagesCollapseError">
-                                    Error
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
-                                    data-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="401.html">401 Page</a>
-                                        <a class="nav-link" href="404.html">404 Page</a>
-                                        <a class="nav-link" href="500.html">500 Page</a>
-                                    </nav>
-                                </div>
-                            </nav>
-                        </div>
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                            aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-pie"></i></div>
+                            สถิติการเบิกวัสดุ
+
                         </a>
-                        <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
+
                     </div>
+                </div>
+                <div class="sb-sidenav-footer justify-content-center">
+                    <div class="small"><a class="nav-link" href="login_ui.html"><button
+                                class="btn btn-blue text-white text-lg"><i class="fas fa-door-open"></i> ออกจากระบบ
+                            </button></a> </div>
+
                 </div>
 
             </nav>
+
         </div>
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid">
-
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-table mr-1"></i>
-                            DataTable Example
-                        </div>
+                    <div class="mt-4 ml-4">
+                        <h1> คลังวัสดุ</h1>
+                    </div>
+                    <div class="card mb-4 mt-4">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
 
                                 </table>
                             </div>
@@ -210,53 +201,104 @@
                     </div>
                 </div>
             </main>
+
         </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal Manage -->
     <div class="modal fade" id="modalManage" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">จัดการวัสดุ</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title">เพิ่มรายการวัสดุ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_modal">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">รหัสวัสดุ:</label>
-                        <div class="col-md-4">
-                            <input id="textinput" name="textinput" type="text" placeholder="1010000XX"
-                                class="form-control input-md">
+                    <div class="row mx-auto justify-content-center">
+                        <div class="row mt-2">
+                            <div class="col-4">
+                                <label class="control-label mt-2">รหัสวัสดุ:</label>
+                            </div>
+                            <div class="col-6">
+                                <input id="textinput" name="textinput" type="text" placeholder="1010000XX"
+                                    class="form-control input-md" id="modal_id">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">ชื่อวัสดุ:</label>
-                        <div class="col-md-4">
-                            <input id="textinput" name="textinput" type="text" placeholder="กระจกหกด้าน"
-                                class="form-control input-md">
+
+                        <div class="row mt-2">
+                            <div class="col-4">
+                                <label class="control-label mt-2">ชื่อวัสดุ:</label>
+                            </div>
+                            <div class="col-6">
+                                <input id="textinput" name="textinput" type="text" placeholder="กระจกหกด้าน"
+                                    class="form-control input-md" id="modal_des">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">จำนวน:</label>
-                        <div class="col-md-4">
-                            <input id="textinput" name="textinput" type="number" placeholder="0"
-                                class="form-control input-md">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">หน่วยนับ:</label>
-                        <div class="col-md-4">
-                            <input id="textinput" name="textinput" type="text" placeholder="ROL"
-                                class="form-control input-md">
+
+                        <div class="row mt-2">
+                            <div class="col-4">
+                                <label class="control-label mt-2">หน่วยนับ:</label>
+                            </div>
+                            <div class="col-6">
+                                <input id="textinput" name="textinput" type="text" placeholder="ROL"
+                                    class="form-control input-md">
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                    <button type="button" class="btn btn-primary">บันทึก</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal ADD -->
+    <div class="modal fade bd-example-modal-xl" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">เพิ่มรายการวัสดุ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Text input-->
+                    <div class="row mx-auto justify-content-center">
+                        <div class="row mx-auto">
+                            <label class="control-label mr-3 col-12">รหัสวัสดุ:</label>
+                            <label class="control-label col-12" id="modal_id"></label>
+                        </div>
+
+                        <div class="row mx-auto ">
+                            <label class="control-label mr-3  col-12">ชื่อวัสดุ:</label>
+                            <label class="control-label col-14" id="modal_des"></label>
+                        </div>
+
+                        <div class="row mx-auto ">
+                            <label class="control-label mr-3 col-12">หน่วยนับ:</label>
+                            <label class="control-label col-12" id="modal_unit"></label>
+                        </div>
+
+                        <div class="row mx-auto ">
+                            <label class="control-label mr-3 col-12">จำนวนที่เหลือ:</label>
+                            <label class="control-label col-12" id="modal_remain"></label>
+                        </div>
+                    </div>
+                    <div class="row mx-auto justify-content-center mt-4">
+                        <label class="control-label mr-3 mt-2 ">เพิ่ม:</label>
+                        <input type="number" class="form-control col-2">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                    <button type="button" class="btn btn-primary" id="addbtn" data-dismiss="modal">เพิ่ม</button>
                 </div>
             </div>
         </div>
