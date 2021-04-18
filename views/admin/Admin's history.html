@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title></title>
+    <title>history</title>
     <link href="/dist/css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
         crossorigin="anonymous" />
@@ -55,29 +55,39 @@
             font-size: 15px;
             font-weight: normal;
         }
+
+        .btn-red {
+            background-color: #AB2900;
+            font-size: 15px;
+            font-weight: normal;
+        }
+        .btn-yellow{
+            background-color: #E99B52;
+            font-size: 15px;
+            font-weight: normal;
+        }
+
+        .wait {
+            color: #C4C4C4;
+        }
+
+        .success {
+            color: #70E000;
+        }
     </style>
 
     <script>
         $(document).ready(function () {
             let dataSet = [
-                { codeDurable: 101000061, name: "เครื่องเหลาดินสอ", unit: "MAC", remain: 56 },
-                { codeDurable: 101000062, name: "เชือกขาว ขนาด 1 กก.", unit: "ROL", remain: 30 },
-                { codeDurable: 101000063, name: "เชือกขาวแดง", unit: "ROL", remain: 20 },
-                { codeDurable: 101000064, name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ", unit: "CAS", remain: 35 },
-                { codeDurable: 101000065, name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ", unit: "CAS", remain: 15 },
-                { codeDurable: 101000066, name: "ซองจดหมายสีน้ำตาล C5", unit: "CAS", remain: 24 },
-                { codeDurable: 101000067, name: "ซองพลาสติกเติมแฟ้มโชว์เอกสาร", unit: "PAC", remain: "56" },
-                { codeDurable: 101000069, name: "ซองสีน้ำตาล C4 (ขยายข้าง) มฟล.ภาษาไทย", unit: "CAS", remain: 26 },
-                { codeDurable: 101000070, name: "ซองสีน้ำตาล C4 (ไม่ขยายข้าง) มฟล.ภาษาไทย", unit: "CAS", remain: 33 },
-                { codeDurable: 101000061, name: "เครื่องเหลาดินสอ", unit: "MAC", remain: 56 },
-                { codeDurable: 101000062, name: "เชือกขาว ขนาด 1 กก.", unit: "ROL", remain: 30 },
-                { codeDurable: 101000063, name: "เชือกขาวแดง", unit: "ROL", remain: 20 },
-                { codeDurable: 101000064, name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ", unit: "CAS", remain: 35 },
-                { codeDurable: 101000065, name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ", unit: "CAS", remain: 15 },
-                { codeDurable: 101000066, name: "ซองจดหมายสีน้ำตาล C5", unit: "CAS", remain: 24 },
-                { codeDurable: 101000067, name: "ซองพลาสติกเติมแฟ้มโชว์เอกสาร", unit: "PAC", remain: "56" },
-                { codeDurable: 101000069, name: "ซองสีน้ำตาล C4 (ขยายข้าง) มฟล.ภาษาไทย", unit: "CAS", remain: 26 },
-                { codeDurable: 101000070, name: "ซองสีน้ำตาล C4 (ไม่ขยายข้าง) มฟล.ภาษาไทย", unit: "CAS", remain: 33 },
+                { name: "รศ.ดร.เฌอปราง อารีย์กุล ", list: 1400361, date: "4/1/2021", status: ' <button class="btn btn-blue text-white" style="border-radius: 10px;">เสร็จสิ้น</button>'},
+                { name: "รศ.ดร.เฌอปราง อารีย์กุล  ", list: 1400362, date: "4/1/2021", status: ' <button class="btn btn-blue text-white" style="border-radius: 10px;">เสร็จสิ้น</button>' },
+                { name: "รศ.ดร.เฌอปราง อารีย์กุล ", list: 1400363, date: "4/1/2021", status: ' <button class="btn btn-red text-white" style="border-radius: 10px;">ปฏิเสธ</button>' },
+                { name: "นาย โทนี่  วูดเเมน ", list: 1400364, date: "4/1/2021", status: ' <button class="btn btn-blue text-white" style="border-radius: 10px;">เสร็จสิ้น</button>' },
+                { name: "นาย โทนี่  วูดเเมน ", list: 1400365, date: "4/1/2021", status: ' <button class="btn btn-blue text-white" style="border-radius: 10px;">เสร็จสิ้น</button>' },
+                { name: "นาย โทนี่  วูดเเมน ", list: 1400366, date: "4/1/2021", status: ' <button class="btn btn-blue text-white" style="border-radius: 10px;">เสร็จสิ้น</button>' },
+                { name: "อาจารย์ เเดง กีตาร์ ", list: 1400367, date: "4/1/2021", status: ' <button class="btn btn-yellow text-white" style="border-radius: 10px;">ไม่ครบ</button>' },
+                { name: "อาจารย์ เเดง กีตาร์ ", list: 1400368, date: "4/1/2021", status: ' <button class="btn btn-blue text-white" style="border-radius: 10px;">เสร็จสิ้น</button>' },
+                { name: "อาจารย์ เเดง กีตาร์ ", list: 1400369, date: "4/1/2021", status: ' <button class="btn btn-blue text-white" style="border-radius: 10px;">เสร็จสิ้น</button>' }
             ];
 
             //Create
@@ -92,20 +102,17 @@
                         }, title: "ลำดับ"
                     },
 
-                    { data: "codeDurable", title: "รหัสวัสดุ" },
-                    { data: "name", title: "คำอธิบายวัสดุ" },
-                    { data: "unit", title: "หน่วยนับ" },
-                    { data: "remain", title: "จำนวนคงคลัง" },
+                    { data: "name", title: "ชื่อ-นามสกุล" },
+                    { data: "list", title: "รายการ" },
+                    { data: "date", title: "วันที่" },
+                    { data: "status", title: "สถานะจ่ายของ" },
                     {
-                        title: 'เพิ่ม', render: function (data, type, row, meta) {
+                        title: '<center>คำสั่ง', render: function (data, type, row, meta) {
                             let tmp = `
-                                     <div class="row mx-auto justify-content-center">
-                                     <div class="ml-2">
-                                        <button class="btn btn-blue text-white text-center" data-toggle="modal" data-target="#modalAdd" style=" border-radius: 30px;">เพิ่ม</button>
-                                       </div>               
+                                     <div class="row mx-auto justify-content-center col-8">                                     
+                                        <h5><span class="badge badge-pill badge-dark" style="background-color: #530070; width:100%" > > </span></h5>                                       
                                 </div>`;
                             return tmp;
-
                         }
                     }
                 ]
@@ -124,7 +131,6 @@
                     $("#modal_des").append(des);
                     $("#modal_remain").append(remain);
                     $("#modal_unit").append(unit);
-
                 }
             });
 
@@ -141,14 +147,6 @@
                 $("#modal_remain").html('');
                 $("modal_unit").html('');
             });
-            $("#savebtn").on('click', function () {
-                Swal.fire(
-                    'Good job!',
-                    'You clicked the button!',
-                    'success'
-                )
-            });
-
         });
 
     </script>
@@ -156,6 +154,8 @@
 </head>
 
 <body class="sb-nav-fixed">
+
+
     <nav class="sb-topnav navbar navbar-expand " style="background-color: #2B7AA0;">
         <img src="../../img/it-logo.png" alt="" style="width: 50px;">
         <a class="navbar-brand text-white" href="">ระบบเบิกวัสดุสำนักเทคโนโลยีสารสนเทศ</a>
@@ -187,23 +187,23 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">MENU</div>
-                        <a class="nav-link active" href="Admin's resource list.html">
+                        <a class="nav-link " href="Admin's resource list.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
                             คลังวัสดุ
                         </a>
 
-                        <a class="nav-link" href="Admin's request.html">
+                        <a class="nav-link " href="Admin's request.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             รายการร้องขอวัสดุ
 
                         </a>
-                        <a class="nav-link" href="Admin's history.html">
+                        <a class="nav-link active" href="Admin's history.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             ประวัติการจ่ายวัสดุ
 
                         </a>
 
-                        <a class="nav-link" href="Admin's statistics.html">
+                        <a class="nav-link" href="Admin's statistics.html" >
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-pie"></i></div>
                             สถิติการเบิกวัสดุ
 
@@ -213,8 +213,8 @@
                 </div>
                 <div class="sb-sidenav-footer justify-content-center">
                     <div class="small"><a class="nav-link" href="login_ui.html"><button
-                                class="btn btn-blue text-white "><i class="fas fa-door-open"></i> ออกจากระบบ
-                            </button></a> </div>
+                        class="btn btn-blue text-white "><i class="fas fa-door-open"></i> ออกจากระบบ
+                    </button></a> </div>
 
                 </div>
 
@@ -225,20 +225,14 @@
             <main>
                 <div class="container-fluid">
                     <div class="mt-4 ml-4">
-                        <h1> คลังวัสดุ</h1>
+                        <h1> ประวัติการจ่ายวัสดุ</h1>
                     </div>
 
-                    <div class="row mx-auto mt-4">
-                        <div class="col-sm-6">
-                            <button class="btn btn-lg text-white ml-2" data-toggle="modal" data-target="#modalManage"
-                                style="background-color:#004FAB; border-radius: 30px;">เพิ่มรายการวัสดุ </button>
-                        </div>
+                    
 
 
 
-                    </div>
-
-                    <div class="card mb-4 mt-4" style="border-radius: 20px;">
+                    <div class="card mb-4" style="border-radius: 20px; margin-top: 80px;">
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
@@ -252,13 +246,13 @@
 
         </div>
     </div>
-    <!-- Modal Manage -->
-    <div class="modal fade" id="modalManage" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    <!-- Modal success-->
+    <div class="modal fade" id="modalsuccess" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">เพิ่มรายการวัสดุ</h5>
+                    <h5 class="modal-title"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_modal">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -341,19 +335,16 @@
                     </div>
                     <div class="row mx-auto justify-content-center mt-4">
                         <label class="control-label mr-3 mt-2 ">เพิ่ม:</label>
-                        <input type="number" class="form-control col-1" style="border-radius: 20px;">
+                        <input type="number" class="form-control col-2">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                    <button type="button" class="btn btn-primary" id="savebtn" data-dismiss="modal">บันทึก</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button>
                 </div>
             </div>
         </div>
     </div>
-
-
-
 
 
 
