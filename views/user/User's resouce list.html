@@ -97,7 +97,7 @@
                             let tmp = `
                                      <div class="row " >
                                      <div class="col-2 p-2 ml-3">
-                                        <button class="btn btn-primary">เบิก</button>
+                                        <button class="btn btn-primary" data-target="#modalAdd" data-toggle="modal">เบิก</button>
                                        </div>               
                                 </div>`;
                             return tmp;
@@ -204,63 +204,10 @@
 
         </div>
     </div>
-    <!-- Modal Manage -->
-    <div class="modal fade" id="modalManage" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">เพิ่มรายการวัสดุ</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_modal">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Text input-->
-                    <div class="row mx-auto justify-content-center">
-                        <div class="row mt-2">
-                            <div class="col-4">
-                                <label class="control-label mt-2">รหัสวัสดุ:</label>
-                            </div>
-                            <div class="col-6">
-                                <input id="textinput" name="textinput" type="text" placeholder="1010000XX"
-                                    class="form-control input-md" id="modal_id">
-                            </div>
-                        </div>
-
-                        <div class="row mt-2">
-                            <div class="col-4">
-                                <label class="control-label mt-2">ชื่อวัสดุ:</label>
-                            </div>
-                            <div class="col-6">
-                                <input id="textinput" name="textinput" type="text" placeholder="กระจกหกด้าน"
-                                    class="form-control input-md" id="modal_des">
-                            </div>
-                        </div>
-
-                        <div class="row mt-2">
-                            <div class="col-4">
-                                <label class="control-label mt-2">หน่วยนับ:</label>
-                            </div>
-                            <div class="col-6">
-                                <input id="textinput" name="textinput" type="text" placeholder="ROL"
-                                    class="form-control input-md">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal ADD -->
     <div class="modal fade bd-example-modal-xl" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
         aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">เพิ่มรายการวัสดุ</h5>
@@ -282,20 +229,22 @@
                         </div>
 
                         <div class="row mx-auto ">
-                            <label class="control-label mr-3 col-12">หน่วยนับ:</label>
-                            <label class="control-label col-12" id="modal_unit"></label>
-                        </div>
-
-                        <div class="row mx-auto ">
                             <label class="control-label mr-3 col-12">จำนวนที่เหลือ:</label>
                             <label class="control-label col-12" id="modal_remain"></label>
                         </div>
+                        <div class="row mx-auto ">
+                            <label class="control-label mr-3 col-12">จำนวนที่เบิก:</label>
+                            <input id="textinput" name="textinput" type="number" placeholder="0" min="0"
+                                    class="form-control input-md" id="modal_des">
+                        </div>
+                        <div class="row mx-auto">
+                            <label class="control-label mr-3 col-12">วัตถุประสงคืในการเบิก:</label>
+                            <input type="radio" name="" id="">การเรียนการสอน
+                            <input type="radio" name="" id="">สำนักงาน
+                            <input type="radio" name="" id="">โครงงาน / งาน
+                            <input type="radio" name="" id="">อื่นๆ
+                        </div>
                     </div>
-                    <div class="row mx-auto justify-content-center mt-4">
-                        <label class="control-label mr-3 mt-2 ">เพิ่ม:</label>
-                        <input type="number" class="form-control col-2">
-                    </div>
-                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
                     <button type="button" class="btn btn-primary" id="addbtn" data-dismiss="modal">เพิ่ม</button>
@@ -303,6 +252,7 @@
             </div>
         </div>
     </div>
+
 </body>
 
 </html>
