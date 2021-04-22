@@ -86,7 +86,62 @@
 
     <script>
         $(document).ready(function () {
-            
+            Highcharts.chart('container', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'สถิติการเบิกมากที่สุด'
+                },
+                xAxis: {
+                    type: 'category',
+                    labels: {
+                        rotation: -45,
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'จำนวน(อัน)'
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    pointFormat: 'จำนวนในการเบิก: <b>{point.y:.1f} อัน</b>'
+                },
+                series: [{
+                    name: 'Population',
+                    data: [
+                        ['เครื่องเหลาดินสอ', 56],
+                        ['เชือกขาว ขนาด 1 กก.', 30],
+                        ['เชือกขาวแดง', 20],
+                        ['ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ', 35],
+                        ['ซองจดหมายสีน้ำตาล C5', 24],
+                        ['ซองพลาสติกเติมแฟ้มโชว์เอกสาร', 56],
+                        ['ซองสีน้ำตาล C4 (ขยายข้าง) มฟล.ภาษาไทย', 26],
+                        ['ซองสีน้ำตาล C4 (ไม่ขยายข้าง) มฟล.ภาษาไทย', 33],
+                    ],
+                    dataLabels: {
+                        enabled: true,
+                        rotation: -90,
+                        color: '#FFFFFF',
+                        align: 'right',
+                        format: '{point.y:.1f}', // one decimal
+                        y: 10, // 10 pixels down from the top
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }]
+            });
+
 
             let dataSet = [
                 { codeDurable: 101000061, name: "เครื่องเหลาดินสอ", unit: "MAC", remain: 56 },
@@ -95,7 +150,7 @@
                 { codeDurable: 101000064, name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ", unit: "CAS", remain: 35 },
                 { codeDurable: 101000065, name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ", unit: "CAS", remain: 15 },
                 { codeDurable: 101000066, name: "ซองจดหมายสีน้ำตาล C5", unit: "CAS", remain: 24 },
-                { codeDurable: 101000067, name: "ซองพลาสติกเติมแฟ้มโชว์เอกสาร", unit: "PAC", remain: "56" },
+                { codeDurable: 101000067, name: "ซองพลาสติกเติมแฟ้มโชว์เอกสาร", unit: "PAC", remain: 56 },
                 { codeDurable: 101000069, name: "ซองสีน้ำตาล C4 (ขยายข้าง) มฟล.ภาษาไทย", unit: "CAS", remain: 26 },
                 { codeDurable: 101000070, name: "ซองสีน้ำตาล C4 (ไม่ขยายข้าง) มฟล.ภาษาไทย", unit: "CAS", remain: 33 },
                 { codeDurable: 101000061, name: "เครื่องเหลาดินสอ", unit: "MAC", remain: 56 },
@@ -125,12 +180,12 @@
                     { data: "name", title: "คำอธิบายวัสดุ" },
                     { data: "unit", title: "หน่วยนับ" },
                     { data: "remain", title: "จำนวนที่เบิก" },
-                   
+
                 ]
             });
 
 
-          
+
         });
 
     </script>
@@ -212,7 +267,9 @@
                         <h1> สถิติการเบิกวัสดุ </h1>
                     </div>
 
-
+                    <!-- chart -->
+                    <figure class="highcharts-figure">
+                        <div id="container"></div>
                         <div class="card mb-4" style="border-radius: 20px; margin-top: 80px;">
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -227,9 +284,9 @@
 
         </div>
     </div>
-    
 
-  
+
+
 
 
 
