@@ -40,6 +40,22 @@ app.get("/admin statistics", function(req, res){
     res.sendFile(path.join(__dirname, "statistics.html"));
 });
 
+app.get("/user request list", function(req, res){
+    res.sendFile(path.join(__dirname, "request list.html"));
+});
+
+app.get("/user payment list", function(req, res){
+    res.sendFile(path.join(__dirname, "payment list.html"));
+});
+
+app.get("/user request list", function(req, res){
+    res.sendFile(path.join(__dirname, "๊User's resouce list.html"));
+});
+
+app.get("/user request list", function(req, res){
+    res.sendFile(path.join(__dirname, "withdrawal list.html"));
+});
+
 
 // ----- Get User -----
 app.get("/user", function(req, res){
