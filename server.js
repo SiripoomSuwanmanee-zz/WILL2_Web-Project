@@ -25,19 +25,19 @@ app.get("/admin login", function(req, res){
 });
 
 app.get("/admin inventory", function(req, res){
-    res.sendFile(path.join(__dirname, "คลังวัสดุAdmin.html"));
+    res.sendFile(path.join(__dirname, "Admin's resource list.html"));
 });
 
 app.get("/admin history", function(req, res){
-    res.sendFile(path.join(__dirname, "ประวัติจ่ายวัสดุ.html"));
+    res.sendFile(path.join(__dirname, "resource payment history .html"));
 });
 
 app.get("/admin list of resource was out", function(req, res){
-    res.sendFile(path.join(__dirname, "รายการจ่ายวัสดุ.html"));
+    res.sendFile(path.join(__dirname, "payment list.html"));
 });
 
 app.get("/admin statistics", function(req, res){
-    res.sendFile(path.join(__dirname, "สถิติ.html"));
+    res.sendFile(path.join(__dirname, "statistics.html"));
 });
 
 
@@ -55,6 +55,7 @@ app.get("/user", function(req, res){
     })
 });
 
+// ----- Get Resource -----
 app.get("/resource", function(req, res){
     const sql = "SELECT Resource_ID FROM resource";
     con.query(sql, function(err, result){
@@ -68,6 +69,7 @@ app.get("/resource", function(req, res){
     })
 });
 
+// ----- Get Request -----
 app.get("/request", function(req, res){
     const sql = "SELECT Request_ID FROM request";
     con.query(sql, function(err, result){
@@ -80,6 +82,7 @@ app.get("/request", function(req, res){
         }
     })
 });
+
 
 const port = 3000;
 app.listen(port, function(){
