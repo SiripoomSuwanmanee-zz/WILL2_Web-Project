@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>User's resouce list</title>
+    <title>request list</title>
     <link href="/dist/css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
         crossorigin="anonymous" />
@@ -53,31 +53,20 @@
             background-color: #004FAB;
             font-size: 15px;
             font-weight: normal;
-            
         }
-
     </style>
     <script>
         $(document).ready(function () {
             let dataSet = [
-                { codeDurable: 101000061, name: "เครื่องเหลาดินสอ", unit: "MAC", remain: 56 },
-                { codeDurable: 101000062, name: "เชือกขาว ขนาด 1 กก.", unit: "ROL", remain: 30 },
-                { codeDurable: 101000063, name: "เชือกขาวแดง", unit: "ROL", remain: 20 },
-                { codeDurable: 101000064, name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ", unit: "CAS", remain: 35 },
-                { codeDurable: 101000065, name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ", unit: "CAS", remain: 15 },
-                { codeDurable: 101000066, name: "ซองจดหมายสีน้ำตาล C5", unit: "CAS", remain: 24 },
-                { codeDurable: 101000067, name: "ซองพลาสติกเติมแฟ้มโชว์เอกสาร", unit: "PAC", remain: "56" },
-                { codeDurable: 101000069, name: "ซองสีน้ำตาล C4 (ขยายข้าง) มฟล.ภาษาไทย", unit: "CAS", remain: 26 },
-                { codeDurable: 101000070, name: "ซองสีน้ำตาล C4 (ไม่ขยายข้าง) มฟล.ภาษาไทย", unit: "CAS", remain: 33 },
-                { codeDurable: 101000061, name: "เครื่องเหลาดินสอ", unit: "MAC", remain: 56 },
-                { codeDurable: 101000062, name: "เชือกขาว ขนาด 1 กก.", unit: "ROL", remain: 30 },
-                { codeDurable: 101000063, name: "เชือกขาวแดง", unit: "ROL", remain: 20 },
-                { codeDurable: 101000064, name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ", unit: "CAS", remain: 35 },
-                { codeDurable: 101000065, name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ", unit: "CAS", remain: 15 },
-                { codeDurable: 101000066, name: "ซองจดหมายสีน้ำตาล C5", unit: "CAS", remain: 24 },
-                { codeDurable: 101000067, name: "ซองพลาสติกเติมแฟ้มโชว์เอกสาร", unit: "PAC", remain: "56" },
-                { codeDurable: 101000069, name: "ซองสีน้ำตาล C4 (ขยายข้าง) มฟล.ภาษาไทย", unit: "CAS", remain: 26 },
-                { codeDurable: 101000070, name: "ซองสีน้ำตาล C4 (ไม่ขยายข้าง) มฟล.ภาษาไทย", unit: "CAS", remain: 33 },
+                { list: 1400361, date: "4/1/2021", resson: "ยังไม่มีในคลัง", empty: "" },
+                { list: 1400362, date: "5/1/2021.", resson: "รับของได้เเล้ว", empty: "" },
+                { list: 1400363, date: "6/1/2021", resson: "รับของได้เเล้ว", empty: "" },
+                { list: 1400364, date: "7/1/2021", resson: "ของชำรุด", empty: "" },
+                { list: 1400365, date: "8/1/2021", resson: "-", empty: "" },
+                { list: 1400366, date: "9/1/2021", resson: "-", empty: "" },
+                { list: 1400367, date: "10/1/2021", resson: "ของชำรุด", empty: "" },
+                { list: 1400368, date: "11/1/2021", resson: "ยังไม่มีในคลัง", empty: "" },
+                { list: 1400369, date: "11/1/2021", resson: "รับของได้เเล้ว", empty: "" },
             ];
 
             //Create
@@ -92,22 +81,22 @@
                         }, title: "ลำดับ"
                     },
 
-                    { data: "codeDurable", title: "รหัสวัสดุ" },
-                    { data: "name", title: "คำอธิบายวัสดุ" },
-                    { data: "unit", title: "หน่วยนับ" },
-                    { data: "remain", title: "จำนวนคงคลัง" },
+                    { data: "list", title: "รายการที่เบิก" },
+                    { data: "date", title: "วัน/เดือน/ปี" },
                     {
-                        title: 'เบิก', render: function (data, type, row, meta) {
+                        title: 'เพิ่มเติม', render: function (data, type, row, meta) {
                             let tmp = `
                                      <div class="row " >
                                      <div class="col-2 p-2 ml-3">
-                                        <button class="btn btn-blue btn-lg text-white" data-target="#modalAdd" data-toggle="modal">เบิก</button>
+                                        <button class="btn btn-primary">รายละเอียด</button>
                                        </div>               
                                 </div>`;
                             return tmp;
 
                         }
-                    }
+                    },
+                    { data: "empty", title: "สถานะ" },
+                    { data: "resson", title: "หมายเหตุ" },
                 ]
             });
             $("#addbtn").on('click', function () {
@@ -118,39 +107,7 @@
                 )
             });
 
-            $('#dataTable tr').on('click', function () {
-                var tds = $(this).find('td');
-                if (tds.length != 0) {
-
-                    var id = tds.eq(1).text();
-                    var des = tds.eq(2).text();
-                    var unit = tds.eq(3).text();
-                    var remain = tds.eq(4).text();
-
-                    $("#modal_id").append(id);
-                    $("#modal_des").append(des);
-                    $("#modal_remain").append(remain);
-                    $("#modal_unit").html(unit);
-
-                }
-            });
-
-            $('#close_modal').on('click', function () {
-                $("#modal_id").html('รหัสวัสดุ: ');
-                $("#modal_des").html('ชื่อวัสดุ: ');
-                $("#modal_remain").html('จำนวนที่เหลือ: ');
-                $("modal_unit").html('หน่วยนับ: ');
-            });
-
-            $(".btn").on('click', function () {
-                $("#modal_id").html(' ');
-                $("#modal_des").html(' ');
-                $("#modal_remain").html('');
-                $("modal_unit").html('');
-            });
-
         });
-
     </script>
 
 </head>
@@ -218,7 +175,7 @@
             <main>
                 <div class="container-fluid">
                     <div class="mt-4 ml-4">
-                        <h1> รายการวัสดุ</h1>
+                        <h1> รายการสั่งเบิก </h1>
                     </div>
                     <div class="card mb-4 mt-4">
                         <div class="card-body">
@@ -234,13 +191,13 @@
 
         </div>
     </div>
-    <!-- Modal ADD -->
-    <div class="modal fade bd-example-modal-xl" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    <!-- Modal Manage -->
+    <div class="modal fade" id="modalManage" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
         aria-hidden="true">
-        <div class="modal-dialog modal-md" role="document">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">รายการที่เบิก</h5>
+                    <h5 class="modal-title">เพิ่มรายการวัสดุ</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_modal">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -248,36 +205,84 @@
                 <div class="modal-body">
                     <!-- Text input-->
                     <div class="row mx-auto justify-content-center">
-                        <div class="row col-12">
-                            <label class="control-label mr-3 col-sm-3">รหัสวัสดุ:</label>
-                            <label class="control-label col-3" id="modal_id"></label>
-                      </div>
-                      <div class="row col-12">
-                            <label class="control-label mr-3  col-sm-3">ชื่อวัสดุ:</label>
-                            <label class="control-label col-8" id="modal_des"></label>
+                        <div class="row mt-2">
+                            <div class="col-4">
+                                <label class="control-label mt-2">รหัสวัสดุ:</label>
+                            </div>
+                            <div class="col-6">
+                                <input id="textinput" name="textinput" type="text" placeholder="1010000XX"
+                                    class="form-control input-md" id="modal_id">
+                            </div>
                         </div>
 
-                            <div class="row col-12 ">
-                            <label class="control-label mr-3 col-sm-3">หน่วยนับ:</label>
-                            <label class="control-label col-3" id="modal_unit"></label>
+                        <div class="row mt-2">
+                            <div class="col-4">
+                                <label class="control-label mt-2">ชื่อวัสดุ:</label>
+                            </div>
+                            <div class="col-6">
+                                <input id="textinput" name="textinput" type="text" placeholder="กระจกหกด้าน"
+                                    class="form-control input-md" id="modal_des">
+                            </div>
                         </div>
 
-                            <div class="row col-12">
-                            <label class="control-label mr-3 col-sm-3">จำนวนที่เหลือ:</label>
-                            <label class="control-label col-3" id="modal_remain"></label>
+                        <div class="row mt-2">
+                            <div class="col-4">
+                                <label class="control-label mt-2">หน่วยนับ:</label>
+                            </div>
+                            <div class="col-6">
+                                <input id="textinput" name="textinput" type="text" placeholder="ROL"
+                                    class="form-control input-md">
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal ADD -->
+    <div class="modal fade bd-example-modal-xl" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">เพิ่มรายการวัสดุ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Text input-->
+                    <div class="row mx-auto justify-content-center">
                         <div class="row mx-auto">
-                            <label class="control-label mr-3 col-12">วัตถุประสงคืในการเบิก:</label>
-                            <input class="form-control-sm col-2 mb-2 " type="radio" name="" id=""><label class="control-label  col-10">การเรียนการสอน</label>
-                            <input class="form-control-sm col-2 mb-2 " type="radio" name="" id=""><label class="control-label  col-10">สำนักงาน</label>
-                            <input class="form-control-sm col-2 mb-2 " type="radio" name="" id=""><label class="control-label  col-10">โครงงาน / งาน</label>
-                            
-                            <input class="form-control-sm col-2 mb-2 " type="radio" name="" id=""><label class="control-label col-1 mt-1">อื่นๆ</label>
-                            <input type="text" class="form-control col-6" style="border-radius: 20px;">
-                         
+                            <label class="control-label mr-3 col-12">รหัสวัสดุ:</label>
+                            <label class="control-label col-12" id="modal_id"></label>
+                        </div>
+
+                        <div class="row mx-auto ">
+                            <label class="control-label mr-3  col-12">ชื่อวัสดุ:</label>
+                            <label class="control-label col-14" id="modal_des"></label>
+                        </div>
+
+                        <div class="row mx-auto ">
+                            <label class="control-label mr-3 col-12">หน่วยนับ:</label>
+                            <label class="control-label col-12" id="modal_unit"></label>
+                        </div>
+
+                        <div class="row mx-auto ">
+                            <label class="control-label mr-3 col-12">จำนวนที่เหลือ:</label>
+                            <label class="control-label col-12" id="modal_remain"></label>
                         </div>
                     </div>
+                    <div class="row mx-auto justify-content-center mt-4">
+                        <label class="control-label mr-3 mt-2 ">เพิ่ม:</label>
+                        <input type="number" class="form-control col-2">
+                    </div>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
                     <button type="button" class="btn btn-primary" id="addbtn" data-dismiss="modal">เพิ่ม</button>
