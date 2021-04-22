@@ -93,7 +93,7 @@
                     { data: "unit", title: "หน่วยนับ" },
                     { data: "remain", title: "จำนวนคงคลัง" },
                     {
-                        title: '<i class="fa fa-pencil-square-o fa-lg" ></i>เบิก', render: function (data, type, row, meta) {
+                        title: 'เบิก', render: function (data, type, row, meta) {
                             let tmp = `
                                      <div class="row " >
                                      <div class="col-2 p-2 ml-3">
@@ -112,6 +112,37 @@
                     ' ',
                     'success'
                 )
+            });
+
+            $('#dataTable tr').on('click', function () {
+                var tds = $(this).find('td');
+                if (tds.length != 0) {
+
+                    var id = tds.eq(1).text();
+                    var des = tds.eq(2).text();
+                    var unit = tds.eq(3).text();
+                    var remain = tds.eq(4).text();
+
+                    $("#modal_id").append(id);
+                    $("#modal_des").append(des);
+                    $("#modal_remain").append(remain);
+                    $("#modal_unit").html(unit);
+
+                }
+            });
+
+            $('#close_modal').on('click', function () {
+                $("#modal_id").html('รหัสวัสดุ: ');
+                $("#modal_des").html('ชื่อวัสดุ: ');
+                $("#modal_remain").html('จำนวนที่เหลือ: ');
+                $("modal_unit").html('หน่วยนับ: ');
+            });
+
+            $(".btn").on('click', function () {
+                $("#modal_id").html(' ');
+                $("#modal_des").html(' ');
+                $("#modal_remain").html('');
+                $("modal_unit").html('');
             });
 
         });
@@ -210,7 +241,7 @@
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">เพิ่มรายการวัสดุ</h5>
+                    <h5 class="modal-title">รายการที่เบิก</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_modal">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -218,31 +249,34 @@
                 <div class="modal-body">
                     <!-- Text input-->
                     <div class="row mx-auto justify-content-center">
-                        <div class="row mx-auto">
-                            <label class="control-label mr-3 col-12">รหัสวัสดุ:</label>
-                            <label class="control-label col-12" id="modal_id"></label>
+                        <div class="row col-12">
+                            <label class="control-label mr-3 col-sm-3">รหัสวัสดุ:</label>
+                            <label class="control-label col-3" id="modal_id"></label>
+                      </div>
+                      <div class="row col-12">
+                            <label class="control-label mr-3  col-sm-3">ชื่อวัสดุ:</label>
+                            <label class="control-label col-8" id="modal_des"></label>
                         </div>
 
-                        <div class="row mx-auto ">
-                            <label class="control-label mr-3  col-12">ชื่อวัสดุ:</label>
-                            <label class="control-label col-14" id="modal_des"></label>
+                            <div class="row col-12 ">
+                            <label class="control-label mr-3 col-sm-3">หน่วยนับ:</label>
+                            <label class="control-label col-3" id="modal_unit"></label>
                         </div>
 
-                        <div class="row mx-auto ">
-                            <label class="control-label mr-3 col-12">จำนวนที่เหลือ:</label>
-                            <label class="control-label col-12" id="modal_remain"></label>
+                            <div class="row col-12">
+                            <label class="control-label mr-3 col-sm-3">จำนวนที่เหลือ:</label>
+                            <label class="control-label col-3" id="modal_remain"></label>
                         </div>
-                        <div class="row mx-auto ">
-                            <label class="control-label mr-3 col-12">จำนวนที่เบิก:</label>
-                            <input id="textinput" name="textinput" type="number" placeholder="0" min="0"
-                                    class="form-control input-md" id="modal_des">
-                        </div>
+                    </div>
                         <div class="row mx-auto">
                             <label class="control-label mr-3 col-12">วัตถุประสงคืในการเบิก:</label>
-                            <input type="radio" name="" id="">การเรียนการสอน
-                            <input type="radio" name="" id="">สำนักงาน
-                            <input type="radio" name="" id="">โครงงาน / งาน
-                            <input type="radio" name="" id="">อื่นๆ
+                            <input class="form-control-sm col-2 mb-2 " type="radio" name="" id=""><label class="control-label  col-10">การเรียนการสอน</label>
+                            <input class="form-control-sm col-2 mb-2 " type="radio" name="" id=""><label class="control-label  col-10">สำนักงาน</label>
+                            <input class="form-control-sm col-2 mb-2 " type="radio" name="" id=""><label class="control-label  col-10">โครงงาน / งาน</label>
+                            
+                            <input class="form-control-sm col-2 mb-2 " type="radio" name="" id=""><label class="control-label col-1 mt-1">อื่นๆ</label>
+                            <input type="text" class="form-control col-6" style="border-radius: 20px;">
+                         
                         </div>
                     </div>
                 <div class="modal-footer">
