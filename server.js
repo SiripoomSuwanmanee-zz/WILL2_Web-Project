@@ -48,12 +48,24 @@ app.get("/user payment list", function(req, res){
     res.sendFile(path.join(__dirname, "payment list.html"));
 });
 
-app.get("/user request list", function(req, res){
-    res.sendFile(path.join(__dirname, "๊User's resouce list.html"));
+app.get("/user resouce list", function(req, res){
+    res.sendFile(path.join(__dirname, "User's resouce list.html"));
 });
 
-app.get("/user request list", function(req, res){
+app.get("/user withdrawal list", function(req, res){
     res.sendFile(path.join(__dirname, "withdrawal list.html"));
+});
+
+app.get("/advisor payment", function(req, res){
+    res.sendFile(path.join(__dirname, "payment lsit.html"));
+});
+
+app.get("/advisor resource list", function(req, res){
+    res.sendFile(path.join(__dirname, "resource list.html"));
+});
+
+app.get("/advisor resource payment history", function(req, res){
+    res.sendFile(path.join(__dirname, "resource payment history.html"));
 });
 
 
