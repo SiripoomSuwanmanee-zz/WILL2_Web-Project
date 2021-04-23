@@ -52,6 +52,69 @@
         .btn-blue {
             background-color: #004FAB;
         }
+
+        /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: #2DC614;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px #DEF1CB;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
     </style>
     <script>
         $(document).ready(function () {
@@ -92,11 +155,14 @@
                     { data: "email", title: "Email" },
                     { data: "tel", title: "เบอร์โทร" },
                     {
-                        title: '<i class="fa fa-pencil-square-o fa-lg" ></i>จัดการ', render: function (data, type, row, meta) {
+                        title: 'จัดการ', render: function (data, type, row, meta) {
                             let tmp = `
                                      <div class="row " >
                                      <div class="col-2 p-2 ml-3">
-                                        <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" >
+                                        <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                        </label>
                                        </div>               
                                 </div>`;
                             return tmp;
@@ -142,32 +208,48 @@
                     aria-expanded="false"></a>
             </li>
         </ul>
+
+
     </nav>
-    <div id="layoutSidenav">
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid">
-                    <div class="mt-4 ml-4">
-                        <h1> รายการสั่งเบิก </h1>
-                    </div>
+    <div class="sb-sidenav-footer justify-content-center">
+        <div class="small"><a class="nav-link" href="login_ui.html"><button class="btn btn-blue text-white text-lg"><i
+                        class="fas fa-door-open"></i> ออกจากระบบ
+                </button></a> </div>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <div class="mt-4 ml-4">
+                            <h1> รายการสั่งเบิก </h1>
+                        </div>
 
-                    <div class="col-sm-6">
-                        <button class="btn btn-lg text-white ml-2" id="addbtn" data-toggle="modal"
-                            data-target="#modalManage" style="background-color:#004FAB; border-radius: 30px;">Add
-                            user</button>
-                    </div>
-                    <div class="card mb-4 mt-4">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
+                        <div class="col-sm-6">
+                            <button class="btn btn-lg text-white ml-2" id="addbtn" data-toggle="modal"
+                                data-target="#modalManage" style="background-color:#004FAB; border-radius: 30px;">Add
+                                user</button>
+                        </div>
+                        <div class="card mb-4 mt-4">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
 
-                                </table>
+                                    </table>
+                                </div>
                             </div>
+
                         </div>
                     </div>
 
-            </main>
+                </main>
+                <div class="row">
+                    <div class="small"><a class="nav-link" href="/views/login_ui.html"><button
+                                class="btn btn-blue text-white text-lg"><i class="fas fa-door-open"></i> ออกจากระบบ
+                            </button></a>
+                    </div>
+                </div>
 
+            </div>
+           
         </div>
         <!-- Modal -->
         <div class="modal fade" id="modalManage" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
