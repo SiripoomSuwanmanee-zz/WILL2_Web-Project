@@ -68,6 +68,13 @@ app.get("/advisor resource payment history", function(req, res){
     res.sendFile(path.join(__dirname, "resource payment history.html"));
 });
 
+app.get("/superadmin login", function(req, res){
+    res.sendFile(path.join(__dirname, "login_ui.html"));
+});
+
+app.get("/superadmin manage_user", function(req, res){
+    res.sendFile(path.join(__dirname, "manage_user.html"));
+});
 
 // ----- Get User -----
 app.get("/user", function(req, res){
