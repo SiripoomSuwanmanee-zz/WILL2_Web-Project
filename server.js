@@ -136,6 +136,25 @@ app.get("/request", function(req, res){
     })
 });
 
+// ----- Stock Manage ------
+app.get("/request", function(req, res){
+    const sql = "SELECT Stock Manage_ID FROM Stock Manage";
+    con.query(sql, function(err, result){
+        if(err){
+            console.log(err);
+            res.status(500).send("Database server error");
+        }
+        else{
+            con.connect(function(err) {
+                if (err) throw err;
+                con.query(sql, function (err, result, fields) {
+                  if (err) throw err;
+                  console.log(result);
+                });
+              });
+        }
+    })
+});
 
 const port = 3000;
 app.listen(port, function(){
