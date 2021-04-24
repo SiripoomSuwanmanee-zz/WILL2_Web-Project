@@ -85,7 +85,13 @@ app.get("/user", function(req, res){
             res.status(500).send("Database server error");
         }
         else{
-            res.json(result);
+            con.connect(function(err) {
+                if (err) throw err;
+                con.query(sql, function (err, result, fields) {
+                  if (err) throw err;
+                  console.log(result);
+                });
+              });
         }
     })
 });
@@ -99,7 +105,13 @@ app.get("/resource", function(req, res){
             res.status(500).send("Database server error");
         }
         else{
-            res.json(result);
+            con.connect(function(err) {
+                if (err) throw err;
+                con.query(sql, function (err, result, fields) {
+                  if (err) throw err;
+                  console.log(result);
+                });
+              });
         }
     })
 });
@@ -113,7 +125,13 @@ app.get("/request", function(req, res){
             res.status(500).send("Database server error");
         }
         else{
-            res.json(result);
+            con.connect(function(err) {
+                if (err) throw err;
+                con.query(sql, function (err, result, fields) {
+                  if (err) throw err;
+                  console.log(result);
+                });
+              });
         }
     })
 });
