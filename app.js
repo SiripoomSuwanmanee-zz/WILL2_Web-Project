@@ -12,7 +12,7 @@ app.get('/', function(req, res){
     res.render('login');
 });
 
-const port = 3200;
+const port = 3000;
 app.listen(port, function(){
     console.log('Server is ready at ' + port);
 });
