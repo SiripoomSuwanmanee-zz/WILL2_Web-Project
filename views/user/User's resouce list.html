@@ -53,9 +53,8 @@
             background-color: #004FAB;
             font-size: 15px;
             font-weight: normal;
-            
-        }
 
+        }
     </style>
     <script>
         $(document).ready(function () {
@@ -147,7 +146,19 @@
                 $("#modal_des").html(' ');
                 $("#modal_remain").html('');
                 $("modal_unit").html('');
+                $("#txtOther").val('');
+                $("#txtOther").prop("disabled", true);
+                $("input[name='reason']").prop("checked", false);
+
             });
+
+            $("input[name='reason']").click(function () {
+                $("#txtOther").prop("disabled", true);
+                if ($(this).attr('id') == 'reasonOther') {
+                    $("#txtOther").prop("disabled", false);
+                }
+
+            })
 
         });
 
@@ -193,13 +204,13 @@
                             รายการที่เบิก
 
                         </a>
-                        <a class="nav-link " href="User's request list.html" >
+                        <a class="nav-link " href="User's request list.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-archive"></i></div>
-                            รายากรที่สังเบิก
+                            รายการที่สั่งเบิก
 
                         </a>
 
-                        
+
 
                     </div>
                 </div>
@@ -250,33 +261,37 @@
                         <div class="row col-12">
                             <label class="control-label mr-3 col-sm-3">รหัสวัสดุ:</label>
                             <label class="control-label col-3" id="modal_id"></label>
-                      </div>
-                      <div class="row col-12">
+                        </div>
+                        <div class="row col-12">
                             <label class="control-label mr-3  col-sm-3">ชื่อวัสดุ:</label>
                             <label class="control-label col-8" id="modal_des"></label>
                         </div>
 
-                            <div class="row col-12 ">
+                        <div class="row col-12 ">
                             <label class="control-label mr-3 col-sm-3">หน่วยนับ:</label>
                             <label class="control-label col-3" id="modal_unit"></label>
                         </div>
 
-                            <div class="row col-12">
+                        <div class="row col-12">
                             <label class="control-label mr-3 col-sm-3">จำนวนที่เหลือ:</label>
                             <label class="control-label col-3" id="modal_remain"></label>
                         </div>
                     </div>
-                        <div class="row mx-auto">
-                            <label class="control-label mr-3 col-12">วัตถุประสงคืในการเบิก:</label>
-                            <input class="form-control-sm col-2 mb-2 " type="radio" name="" id=""><label class="control-label  col-10">การเรียนการสอน</label>
-                            <input class="form-control-sm col-2 mb-2 " type="radio" name="" id=""><label class="control-label  col-10">สำนักงาน</label>
-                            <input class="form-control-sm col-2 mb-2 " type="radio" name="" id=""><label class="control-label  col-10">โครงงาน / งาน</label>
-                            
-                            <input class="form-control-sm col-2 mb-2 " type="radio" name="" id=""><label class="control-label col-1 mt-1">อื่นๆ</label>
-                            <input type="text" class="form-control col-6" style="border-radius: 20px;">
-                         
-                        </div>
+                    <div class="row mx-auto">
+                        <label class="control-label mr-3 col-12">วัตถุประสงค์ในการเบิก:</label>
+                        <input class="form-control-sm col-2 mb-2 " type="radio" name="reason" id=""><label
+                            class="control-label  col-10">การเรียนการสอน</label>
+                        <input class="form-control-sm col-2 mb-2 " type="radio" name="reason" id=""><label
+                            class="control-label  col-10">สำนักงาน</label>
+                        <input class="form-control-sm col-2 mb-2 " type="radio" name="reason" id=""><label
+                            class="control-label  col-10">โครงงาน / งาน</label>
+
+                        <input class="form-control-sm col-2 mb-2 " type="radio" name="reason" id="reasonOther"><label
+                            class="control-label col-1 mt-1">อื่นๆ</label>
+                        <input type="text" class="form-control col-6 ml-2" id="txtOther" style="border-radius: 20px;">
+
                     </div>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
                     <button type="button" class="btn btn-primary" id="addbtn" data-dismiss="modal">เพิ่ม</button>
