@@ -48,25 +48,50 @@
             color: white;
             font-size: larger;
         }
-
         .btn-blue {
             background-color: #004FAB;
             font-size: 15px;
             font-weight: normal;
         }
+
+        .btn-green {
+            background-color: #70E000;
+            font-size: 15px;
+            font-weight: normal;
+        }
+
+        .btn-red {
+            background-color: #AB2900;
+            font-size: 15px;
+            font-weight: normal;
+        }
+
+        .btn-yellow {
+            background-color: #E99B52;
+            font-size: 15px;
+            font-weight: normal;
+        }
+
+        .btn-gray {
+            background-color: #C4C4C4;
+            font-size: 15px;
+            font-weight: normal;
+        }
+
+       
     </style>
     <script>
         $(document).ready(function () {
             let dataSet = [
-                { list: 1400361, date: "4/1/2021", resson: "ยังไม่มีในคลัง", empty: "" },
-                { list: 1400362, date: "5/1/2021.", resson: "รับของได้เเล้ว", empty: "" },
-                { list: 1400363, date: "6/1/2021", resson: "รับของได้เเล้ว", empty: "" },
-                { list: 1400364, date: "7/1/2021", resson: "ของชำรุด", empty: "" },
-                { list: 1400365, date: "8/1/2021", resson: "-", empty: "" },
-                { list: 1400366, date: "9/1/2021", resson: "-", empty: "" },
-                { list: 1400367, date: "10/1/2021", resson: "ของชำรุด", empty: "" },
-                { list: 1400368, date: "11/1/2021", resson: "ยังไม่มีในคลัง", empty: "" },
-                { list: 1400369, date: "11/1/2021", resson: "รับของได้เเล้ว", empty: "" },
+                { list: 1400361, date: "4/1/2021", resson: "ยังไม่มีในคลัง", empty: '<div class="row mx-auto "> <button class="btn btn-green btn-lg text-white" style="border-radius: 10px;">เสร็จสิ้น</button> <div>' },
+                { list: 1400362, date: "5/1/2021.", resson: "รับของได้เเล้ว", empty: '<div class="row mx-auto "> <button class="btn btn-gray btn-lg text-white" style="border-radius: 10px;">รออนุมัติ</button> <div>' },
+                { list: 1400363, date: "6/1/2021", resson: "รับของได้เเล้ว", empty: '<div class="row mx-auto "> <button class="btn btn-yellow btn-lg text-white" style="border-radius: 10px;">รับของเเล้ว</button> <div>' },
+                { list: 1400364, date: "7/1/2021", resson: "ของชำรุด", empty:  '<div class="row mx-auto "> <button class="btn btn-red btn-lg text-white" style="border-radius: 10px;">ไม่อนุมัติ</button> <div>' },
+                { list: 1400365, date: "8/1/2021", resson: "-", empty: '<div class="row mx-auto "> <button class="btn btn-green btn-lg text-white" style="border-radius: 10px;">รับของเเล้ว</button> <div>' },
+                { list: 1400366, date: "9/1/2021", resson: "-", empty: '<div class="row mx-auto "> <button class="btn btn-gray btn-lg text-white" style="border-radius: 10px;">รออนุมัติ</button> <div>' },
+                { list: 1400367, date: "10/1/2021", resson: "ของชำรุด", empty:'<div class="row mx-auto "> <button class="btn btn-yellow btn-lg text-white" style="border-radius: 10px;">รับของเเล้ว</button> <div>' },
+                { list: 1400368, date: "11/1/2021", resson: "ยังไม่มีในคลัง", empty: '<div class="row mx-auto "> <button class="btn btn-red btn-lg text-white" style="border-radius: 10px;">ไม่อนุมัติ</button> <div>' },
+                { list: 1400369, date: "11/1/2021", resson: "รับของได้เเล้ว", empty: '<div class="row mx-auto "> <button class="btn btn-green btn-lg text-white" style="border-radius: 10px;">เสร็จสิ้น</button> <div>' },
             ];
 
             //Create
@@ -83,8 +108,8 @@
 
                     { data: "list", title: "รายการที่เบิก" },
                     { data: "date", title: "วัน/เดือน/ปี" },
-                    {
-                        title: 'เพิ่มเติม', render: function (data, type, row, meta) {
+                    { data: "empty", title: "สถานะ" },
+                    { title: 'เพิ่มเติม', render: function (data, type, row, meta) {
                             let tmp = `
                                      <div class="row " >
                                      <div class="p-2 ml-3">
@@ -93,10 +118,7 @@
                                 </div>`;
                             return tmp;
 
-                        }
-                    },
-                    { data: "empty", title: "สถานะ" },
-                    { data: "resson", title: "หมายเหตุ" },
+                        }},
                 ]
             });
             $("#addbtn").on('click', function () {
@@ -150,14 +172,14 @@
                             รายการที่เบิก
 
                         </a>
-                        <a class="nav-link active" href="User's request list.html" >
+                        <a class="nav-link active" href="User's request list.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-archive"></i></div>
                             รายากรที่สังเบิก
 
                         </a>
 
 
-                        
+
 
                     </div>
                 </div>
