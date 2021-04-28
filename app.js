@@ -2,11 +2,12 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const { OAuth2Client } = require("google-auth-library");
-const con = require("./config/db");
+const db = require("./config/db");
 const session = require("express-session");
 const { MemoryStore } = require("express-session");
 const Memorystore = require("memorystore")(session);
 const checkUser = require('./checkUser');
+const { database } = require("d:/saloon pj/projectsaloon/config/dbconfig");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -39,16 +40,13 @@ app.get('/welcome', checkUser, (req, res) => {
   res.render('welcome', {user: req.session.user});
 });
 
-//==== Service ====
-
-//Google login service
+//============ Google login service ================
 const client = new OAuth2Client(process.env.CLIENT_ID);
 app.post("/verifyUser", (req, res) => {
   const token = req.body.token;
-  console.log(token);
   if (token) {
     client
-      .verifyidToken({
+      .verifyIdToken({
         idToken: token,
         audience: process.env.CLIENT_ID,
       })
@@ -59,7 +57,7 @@ app.post("/verifyUser", (req, res) => {
         const sql =
           "SELECT User_ID, User_Email, User_Role, User_status FROM user WHERE User_Email=?";
         //DB query
-        con.query(sql, [email], (err, result) => {
+        db.query(sql, [email], (err, result) => {
           if (err) {
             console.log(err);
             return res.status(500).send("Database error");
@@ -73,12 +71,12 @@ app.post("/verifyUser", (req, res) => {
             return res.status(500).send("Inactive member");
           }
           //check user role
-          if (result[0].role == 0) {
+          if (result[0].User_Role == 1) {
             req.session.user = {
               username: payload.name,
-              userID: result[0].userID,
-              role: result[0].role,
-              status: result[0].status,
+              userID: result[0].User_ID,
+              role: result[0].User_Role,
+              status: result[0].User_status,
             }; //save user data to session
             res.send("/welcome");
           }
@@ -93,7 +91,6 @@ app.post("/verifyUser", (req, res) => {
     res.status(400).send("No token");
   }
 });
-
 //logout
 app.get("/logout", (req, res) => {
   // destroy all sessions
@@ -105,6 +102,24 @@ app.get("/logout", (req, res) => {
   });
 });
 
+//==== Service ====
+
+//================================ USER service ================================
+app.get('/getResourcelist', (req, res)=>{
+  const sql="SELECT Resource_ID,	Resource_Name,	Amount_Remain,	Unit FROM resource"
+  db.query(sql, (err,result) =>{
+    
+    if (err) {
+      console.log(err)
+     return res.status(500).send("DB server error");
+    } 
+    
+    res.json(result);
+  
+  });
+});
+
+//============== PORT ==============
 const port = process.env.PORT;
 app.listen(port, function () {
   console.log("Server is ready at " + port);
