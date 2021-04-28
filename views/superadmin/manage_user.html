@@ -152,8 +152,7 @@
                     },
 
                     { data: "name", title: "ชื่อ-นามสกุล" },
-                    { data: "email", title: "Email" },
-                    { data: "tel", title: "เบอร์โทร" },
+                    { data: "email", title: "Email" },                   
                     {
                         title: 'จัดการ', render: function (data, type, row, meta) {
                             let tmp = `
@@ -264,13 +263,20 @@
                     </div>
                     <div class="modal-body">
                         <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">New email's user:</label>
-                            <div class="col-md-4">
+                        <div class="row mx-auto ">
+                            <label class="col-md-4 control-label">New email's user:</label>                           
                                 <input id="textinput" name="textinput" type="text" placeholder="someone@email.com"
-                                    class="form-control input-md">
-                            </div>
+                                    class="form-control col-4 mb-2 input-md">
+                           
                         </div>
+
+                        <div class="row mx-auto ">
+                            <label class="col-md-4 control-label">password:</label>                            
+                                <input id="textinput" name="textinput" type="password" placeholder=""
+                                    class="form-control col-4 input-md">
+                           
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
