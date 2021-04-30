@@ -113,7 +113,7 @@
                             let tmp = `
                                      <div class="row " >
                                      <div class="p-2 ml-3">
-                                        <button class="btn btn-blue btn-lg text-white">รายละเอียด</button>
+                                        <button class="btn btn-blue btn-lg text-white" id="btndetail">รายละเอียด</button>
                                        </div>               
                                 </div>`;
                             return tmp;
@@ -121,6 +121,11 @@
                         }},
                 ]
             });
+
+            $("#btndetail").on("click", function () {
+                window.location.replace("User reqdetail.html");
+            });
+
             $("#addbtn").on('click', function () {
                 Swal.fire(
                     'เพื่มรายการเรียบร้อย!',

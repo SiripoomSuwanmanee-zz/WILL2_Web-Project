@@ -67,7 +67,7 @@
         }
 
         .success {
-            color: #70E000;
+            color: #FFBA08;
         }
     </style>
 
@@ -101,8 +101,8 @@
                     { data: "name", title: "ชื่อ-นามสกุล" },
                     { data: "list", title: "รายการ" },
                     { data: "date", title: "วันที่" },                   
-                    {
-                        title: '<center>คำสั่ง', render: function (data, type, row, meta) {
+                    { data: "status" , title: "สถานะ"},
+                       { title: '<center>คำสั่ง', render: function (data, type, row, meta) {
                             let tmp = `
                                      <div class="row mx-auto justify-content-center col-8">                                     
                                         <button class="btn btn-blue text-white btn-lg mr-1" data-toggle="modal" data-target="#modalsuccess">อนุมัติ</button> <button class="btn btn-red text-white btn-lg">ไม่อนุมัติ</button>                                                  

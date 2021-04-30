@@ -100,7 +100,7 @@
                             let tmp = `
                                      <div class="row " >
                                      <div class="col-2 p-2 ml-3">
-                                        <button class="btn btn-blue btn-lg text-white" data-target="#modalAdd" data-toggle="modal">เบิก</button>
+                                        <button class="btn btn-blue btn-lg text-white"  data-target="#modalAdd" data-toggle="modal">เบิก</button>
                                        </div>               
                                 </div>`;
                             return tmp;
@@ -109,6 +109,12 @@
                     }
                 ]
             });
+            
+            $("#btndetail").on("click", function () {
+                window.location.replace("User reqdetail.html");
+            });
+
+
             $("#addbtn").on('click', function () {
                 Swal.fire(
                     'เพื่มรายการเรียบร้อย!',
@@ -290,6 +296,10 @@
                             class="control-label col-1 mt-1">อื่นๆ</label>
                         <input type="text" class="form-control col-6 ml-2" id="txtOther" style="border-radius: 20px;">
 
+                    </div>
+                    <div class="row mx-auto justify-content-center mt-4">
+                        <label class="control-label mr-3 mt-2 " onkeyup="sum()">เบิกจำนวน: </label>
+                        <input type="number" class="form-control col-3" id="EditAmount" style="border-radius: 20px;">
                     </div>
                 </div>
                 <div class="modal-footer">

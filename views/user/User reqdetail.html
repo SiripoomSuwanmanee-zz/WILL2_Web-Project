@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Withdrawal list</title>
+    <link href="/dist/css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
+        crossorigin="anonymous"></script>
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.10.1/sweetalert2.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.10.1/sweetalert2.min.js"></script>
+
+    <!--Chart CDN-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.3.2/bootbox.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <style>
+        body {
+            font-family: supermarket;
+        }
+
+        th {
+            background-color: #3FACCE;
+            color: white;
+            font-size: larger;
+        }
+
+        .btn {
+            float: right;
+        }
+
+        .btn-blue {
+            background-color: #004FAB;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            let dataSet = [
+                { Durable: "แผ่นยางรองตัด", unit: "SHT", purpose: "ใช้สำหรับการเรียนการสอน" },
+                { Durable: "แผ่นใสสำหรับเขียน ", unit: "BOX", purpose: "ใช้สำหรับการเรียนการสอน" },
+                { Durable: "ฟิวเจอร์บอร์ด65*120CM หนา 3 มม. ", unit: "BOX", purpose: "ใช้สำหรับการเรียนการสอน" },
+                { Durable: "แฟ้มเจาะสัน 2(แฟ้มห่วง 2)", unit: "CAS", purpose: "ใช้สำหรับการเรียนการสอน" },
+                { Durable: "เชือกฟาง", unit: "ROL", purpose: "ใช้สำหรับการเรียนการสอน" },
+
+            ];
+
+            //Create
+            table = $("#dataTable").DataTable({
+
+                data: dataSet,
+                columns: [
+
+                    {
+                        render: function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }, title: "ลำดับ"
+                    },
+
+                    { data: "Durable", title: "วัสดุ" },
+                    { data: "unit", title: "หน่วย" },
+                    { data: "purpose", title: "จุดประสงค์" },
+                    {
+                        title: 'จำนวน', render: function (data, type, row, meta) {
+                            let tmp = `
+                                     <div class="row " >
+                                        
+                                        <input class="form-control col-3" type="number" min="0" value="0">
+                                                  
+                                </div>`;
+                            return tmp;
+
+                        }
+                    }
+                ]
+            });
+            $(".btn").on('click', function () {
+                Swal.fire(
+                    'เพื่มรายการเรียบร้อย!',
+                    ' ',
+                    'success'
+                )
+            });
+
+        });
+    </script>
+
+
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand " style="background-color: #2B7AA0;">
+        <img src="../../img/it-logo.png" alt="" style="width: 50px;">
+        <a class="navbar-brand text-white" href="">ระบบเบิกวัสดุสำนักเทคโนโลยีสารสนเทศ</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0" href="#"></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group">
+
+                <div class="input-group-append">
+
+                </div>
+            </div>
+        </form>
+
+        <!-- Navbar-->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false"></a>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">MENU</div>
+                        <a class="nav-link " href="User's resouce list.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
+                            รายการวัสดุ
+                        </a>
+
+                        <a class="nav-link active" href="User's manage reqlist.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            รายการที่เบิก
+
+                        </a>
+                        <a class="nav-link " href="User's request list.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-archive"></i></div>
+                            รายการที่สั่งเบิก
+
+                        </a>
+
+
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer justify-content-center">
+                    <div class="small"><a class="nav-link" href="login_ui.html"><button
+                                class="btn btn-blue text-white text-lg"><i class="fas fa-door-open"></i> ออกจากระบบ
+                            </button></a> </div>
+
+                </div>
+
+            </nav>
+
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    <div class="mt-4 ml-4">
+                        <h1> รายการที่เบิก</h1>
+                    </div>
+                    <div class="card mb-4 mt-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
+
+                                </table>
+                                <br>
+                                <button type="button" class="btn btn-blue btn-lg text-white ">สั่งเบิก</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

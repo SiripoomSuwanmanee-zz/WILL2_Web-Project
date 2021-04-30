@@ -64,7 +64,7 @@
     </style>
 
     <script>
-        var rowID;
+        
         $(document).ready(function () {
             let ListTable = [
 
@@ -146,7 +146,7 @@
 
             //function Create SelectType
             let select_typeaddnew = $("#SelectTypeAddnew");
-            selectCategory(selectTypeAddnew, select_typeaddnew);
+            selectCategory(selectType, select_typeaddnew);
 
             var selectEditData;
             $("#ListTable").on("click","#btnEdit",function(){
@@ -156,15 +156,11 @@
                 $("#txtManagecode").val(data.code);
                 $("#txtManagedes").val(data.name);
                 $("#txtManageunit").val(data.unit);
-                
-                
-
-
             })
 
 
-
-            $("#ListTable tbody").on("click", "#btnAmount", function () {
+            var rowID;
+            $("#ListTable").on("click", "#btnAmount", function () {
 
                 const currentRow = $(this).parents("tr");
                 const data = table.row(currentRow).data();
@@ -177,12 +173,12 @@
                 $("#txtAmountremain").html(ListTable[rowID].remain);
 
             })
-
-            $("#ListTable tbody").on("click", "#btnEdit", function () {
+            var amountdata
+            $("#ListTable").on("click",  function () {
 
                 const currentRow = $(this).parents("tr");
                 const data = table.row(currentRow).data();
-                rowID = table.row(currentRow).index();
+                amountdata = table.row(currentRow).index();
 
                 //Show each user data from row selected
                 $("#txtManagecode").html(ListTable[rowID].code);
@@ -201,9 +197,7 @@
                 }
                 console.log(Remain)
                 console.log(editAmount)
-            }
-
-            
+            }           
 
         });
 
@@ -219,15 +213,7 @@
             { Status: "ของที่ระลึก" }
         ]
 
-        var selectTypeAddnew = [
-            { Status: "สำนักงาน" },
-            { Status: "ไฟฟ้า" },
-            { Status: "คอมพิวเตอร์" },
-            { Status: "โฆษณา" },
-            { Status: "งานบ้าน" },
-            { Status: "เครื่องแต่งกาย" },
-            { Status: "ของที่ระลึก" }
-        ]
+       
 
     </script>
 
@@ -358,27 +344,51 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- Text input-->
-                    <div class="row mx-auto justify-content-center">
-                        <div class="row col-12">
-                            <label class="control-label mr-3 col-2 float-right">รหัสวัสดุ:</label>
-                            <label class="from-comtrol col-sm-6" id="txtAmountcode"></label>
-                        </div>
-                        <div class="row col-12">
-                            <label class="control-label mr-3  col-2">ชื่อวัสดุ:</label>
-                            <label class="from-comtrol col-6" id="txtAmountdes"></label>
-                        </div>
-
-                        <div class="row col-12 ">
-                            <label class="control-label mr-3 col-2">หน่วยนับ:</label>
-                            <label class="from-comtrol col-3" id="txtAmountunit"></label>
-                        </div>
-
-                        <div class="row col-12">
-                            <label class="control-label mr-3 col-2">หมวดหมู่:</label>
-                            <label class="from-comtrol col-3" id="txtAmountremain"></label>
+                    <!-- Text input-->                       
+                    <div class="form-group">
+                        <div class="row mx-auto ">
+                            <div class="col-md-4 d-flex justify-content-end">
+                                <label class=" form-label mt-2" >รหัสวัสดุ:</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input class="form-control" type="number" id="txtAddcode" style="border-radius: 10px;" disabled >
+                            </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="row mx-auto ">
+                            <div class="col-md-4 d-flex justify-content-end">
+                                <label class=" form-label mt-2" >ชื่อวัสดุ:</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" id="txtAdddes" style="border-radius: 10px;" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row mx-auto ">
+                            <div class="col-md-4 d-flex justify-content-end">
+                                <label class=" form-label mt-2" >หน่วยนับ:</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" id="txtAddunit" style="border-radius: 10px;" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row mx-auto ">
+                            <div class="col-md-4 d-flex justify-content-end">
+                                <label class=" form-label mt-2" >หมวดหมู่:</label>
+                            </div>
+                            <div class="col-md-8">
+                                <select id="SelectTypeAddnew" class="form-control col-5 mb-3 "></select>
+                            </div>
+                        </div>
+                    </div>
+
                     </div>
                 
                 <div class="modal-footer">
