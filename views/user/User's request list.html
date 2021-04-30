@@ -52,30 +52,36 @@
             background-color: #004FAB;
             font-size: 15px;
             font-weight: normal;
+            width: 100px;
         }
 
         .btn-green {
-            background-color: #70E000;
+            background-color: #29AF13;
             font-size: 15px;
             font-weight: normal;
+            width: 100px;
         }
 
         .btn-red {
             background-color: #AB2900;
             font-size: 15px;
             font-weight: normal;
+            width: 100px;
         }
 
         .btn-yellow {
             background-color: #E99B52;
             font-size: 15px;
             font-weight: normal;
+            width: 100px;
         }
 
         .btn-gray {
             background-color: #C4C4C4;
             font-size: 15px;
             font-weight: normal;
+            width: 100px;
+            
         }
 
        
@@ -83,13 +89,13 @@
     <script>
         $(document).ready(function () {
             let dataSet = [
-                { list: 1400361, date: "4/1/2021", resson: "ยังไม่มีในคลัง", empty: '<div class="row mx-auto "> <button class="btn btn-green btn-lg text-white" style="border-radius: 10px;">เสร็จสิ้น</button> <div>' },
+                { list: 1400361, date: "4/1/2021", resson: "ยังไม่มีในคลัง", empty: '<div class="row mx-auto "> <button class="btn btn-green btn-lg text-white" width="50px" style="border-radius: 10px;">เสร็จสิ้น</button> <div>' },
                 { list: 1400362, date: "5/1/2021.", resson: "รับของได้เเล้ว", empty: '<div class="row mx-auto "> <button class="btn btn-gray btn-lg text-white" style="border-radius: 10px;">รออนุมัติ</button> <div>' },
-                { list: 1400363, date: "6/1/2021", resson: "รับของได้เเล้ว", empty: '<div class="row mx-auto "> <button class="btn btn-yellow btn-lg text-white" style="border-radius: 10px;">รับของเเล้ว</button> <div>' },
+                { list: 1400363, date: "6/1/2021", resson: "รับของได้เเล้ว", empty: '<div class="row mx-auto "> <button class="btn btn-yellow btn-lg text-white" style="border-radius: 10px;">รับของได้เเล้ว</button> <div>' },
                 { list: 1400364, date: "7/1/2021", resson: "ของชำรุด", empty:  '<div class="row mx-auto "> <button class="btn btn-red btn-lg text-white" style="border-radius: 10px;">ไม่อนุมัติ</button> <div>' },
-                { list: 1400365, date: "8/1/2021", resson: "-", empty: '<div class="row mx-auto "> <button class="btn btn-green btn-lg text-white" style="border-radius: 10px;">รับของเเล้ว</button> <div>' },
+                { list: 1400365, date: "8/1/2021", resson: "-", empty: '<div class="row mx-auto "> <button class="btn btn-green btn-lg text-white" style="border-radius: 10px;">เสร็จสิ้น</button> <div>' },
                 { list: 1400366, date: "9/1/2021", resson: "-", empty: '<div class="row mx-auto "> <button class="btn btn-gray btn-lg text-white" style="border-radius: 10px;">รออนุมัติ</button> <div>' },
-                { list: 1400367, date: "10/1/2021", resson: "ของชำรุด", empty:'<div class="row mx-auto "> <button class="btn btn-yellow btn-lg text-white" style="border-radius: 10px;">รับของเเล้ว</button> <div>' },
+                { list: 1400367, date: "10/1/2021", resson: "ของชำรุด", empty:'<div class="row mx-auto "> <button class="btn btn-yellow btn-lg text-white" style="border-radius: 10px;">รับของได้เเล้ว</button> <div>' },
                 { list: 1400368, date: "11/1/2021", resson: "ยังไม่มีในคลัง", empty: '<div class="row mx-auto "> <button class="btn btn-red btn-lg text-white" style="border-radius: 10px;">ไม่อนุมัติ</button> <div>' },
                 { list: 1400369, date: "11/1/2021", resson: "รับของได้เเล้ว", empty: '<div class="row mx-auto "> <button class="btn btn-green btn-lg text-white" style="border-radius: 10px;">เสร็จสิ้น</button> <div>' },
             ];
@@ -190,7 +196,7 @@
                 </div>
                 <div class="sb-sidenav-footer justify-content-center">
                     <div class="small"><a class="nav-link" href="login_ui.html"><button
-                                class="btn btn-blue text-white text-lg"><i class="fas fa-door-open"></i> ออกจากระบบ
+                                class="btn btn-blue text-white text-lg" style="width: 150px;"><i class="fas fa-door-open"></i> ออกจากระบบ
                             </button></a> </div>
 
                 </div>

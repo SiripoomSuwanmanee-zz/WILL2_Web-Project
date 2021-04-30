@@ -60,11 +60,11 @@
     <script>
         $(document).ready(function () {
             let dataSet = [
-                { Durable: "แผ่นยางรองตัด", unit: "SHT", purpose: "ใช้สำหรับการเรียนการสอน" },
-                { Durable: "แผ่นใสสำหรับเขียน ", unit: "BOX", purpose: "ใช้สำหรับการเรียนการสอน" },
-                { Durable: "ฟิวเจอร์บอร์ด65*120CM หนา 3 มม. ", unit: "BOX", purpose: "ใช้สำหรับการเรียนการสอน" },
-                { Durable: "แฟ้มเจาะสัน 2(แฟ้มห่วง 2)", unit: "CAS", purpose: "ใช้สำหรับการเรียนการสอน" },
-                { Durable: "เชือกฟาง", unit: "ROL", purpose: "ใช้สำหรับการเรียนการสอน" },
+                { Durable: "แผ่นยางรองตัด", unit: "SHT", purpose: "ใช้สำหรับการเรียนการสอน", amount: 5},
+                { Durable: "แผ่นใสสำหรับเขียน ", unit: "BOX", purpose: "ใช้สำหรับการเรียนการสอน", amount: 2  },
+                { Durable: "ฟิวเจอร์บอร์ด65*120CM หนา 3 มม. ", unit: "BOX", purpose: "ใช้สำหรับการเรียนการสอน", amount: 2 },
+                { Durable: "แฟ้มเจาะสัน 2(แฟ้มห่วง 2)", unit: "CAS", purpose: "ใช้สำหรับการเรียนการสอน", amount: 10 },
+                { Durable: "เชือกฟาง", unit: "ROL", purpose: "ใช้สำหรับการเรียนการสอน", amount: 4 },
 
             ];
 
@@ -72,6 +72,7 @@
             table = $("#dataTable").DataTable({
 
                 data: dataSet,
+                searching : false,
                 columns: [
 
                     {
@@ -83,20 +84,10 @@
                     { data: "Durable", title: "วัสดุ" },
                     { data: "unit", title: "หน่วย" },
                     { data: "purpose", title: "จุดประสงค์" },
-                    {
-                        title: 'จำนวน', render: function (data, type, row, meta) {
-                            let tmp = `
-                                     <div class="row " >
-                                        
-                                        <input class="form-control col-3" type="number" min="0" value="0">
-                                                  
-                                </div>`;
-                            return tmp;
-
-                        }
-                    }
+                    { data: "amount", title: 'จำนวน' }
                 ]
             });
+
             $(".btn").on('click', function () {
                 Swal.fire(
                     'เพื่มรายการเรียบร้อย!',
@@ -145,12 +136,12 @@
                             รายการวัสดุ
                         </a>
 
-                        <a class="nav-link active" href="User's manage reqlist.html">
+                        <a class="nav-link " href="User's manage reqlist.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             รายการที่เบิก
 
                         </a>
-                        <a class="nav-link " href="User's request list.html">
+                        <a class="nav-link active" href="User's request list.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-archive"></i></div>
                             รายการที่สั่งเบิก
 
@@ -161,7 +152,7 @@
                 </div>
                 <div class="sb-sidenav-footer justify-content-center">
                     <div class="small"><a class="nav-link" href="login_ui.html"><button
-                                class="btn btn-blue text-white text-lg"><i class="fas fa-door-open"></i> ออกจากระบบ
+                                class="btn btn-blue text-white text-lg" style="width: 150px;"><i class="fas fa-door-open"></i> ออกจากระบบ
                             </button></a> </div>
 
                 </div>
@@ -173,16 +164,28 @@
             <main>
                 <div class="container-fluid">
                     <div class="mt-4 ml-4">
-                        <h1> รายการที่เบิก</h1>
+                        <h1> รายการสั่งเบิก</h1>
                     </div>
+                    <br>
+                    <div class="row">
+                        <label for="" class="form-label ml-5 col-sm-1"><h4>รายละเอียด: </h4></label>
+                        <label for="" class="form-label col-3"><h5>นายโทนี่  วูดเเมน </h5></label>
+                        <label for="" class="form-label ml-5 col-sm-1"><h4>เลขที่ใบเบิก: </h4></label>
+                        <label for="" class="form-label col-3"><h5>1400361</h5></label>                        
+                    </div>
+                    
+                    <div class="row">
+                        <label for="" class="form-label ml-5 col-sm-1"><h4>วัน/เดือน/ปี : </h4></label>
+                        <label for="" class="form-label col-3"><h5> 12/04/2564</h5></label>
+                    </div>
+
                     <div class="card mb-4 mt-4">
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
 
                                 </table>
-                                <br>
-                                <button type="button" class="btn btn-blue btn-lg text-white ">สั่งเบิก</button>
+                               
                             </div>
                         </div>
                     </div>
