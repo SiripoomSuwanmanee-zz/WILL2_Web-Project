@@ -31,6 +31,42 @@
         integrity="sha512-1zzZ0ynR2KXnFskJ1C2s+7TIEewmkB2y+5o/+ahF7mwNj9n3PnzARpqalvtjSbUETwx6yuxP5AJXZCpnjEJkQw=="
         crossorigin="anonymous"></script>
 
+        <script src="/scripts/jquery.min.js"></script>
+        <script src="/scripts/local/login.js"></script>
+        <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>    
+       
+
+        <script> 
+        function signIn(){
+            // alert('Test')
+            let auth2 = gapi.auth2.getAuthInstance();
+            auth2.signIn({ scope: 'profile email', prompt: 'select_account' }).then((googleUser) => {
+                // var profile = googleUser.getBasicProfile();
+                // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                // console.log('Name: ' + profile.getName());
+                // console.log('Image URL: ' + profile.getImageUrl());
+                // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                const id_token = googleUser.getAuthResponse().id_token;
+                 console.log(id_token)
+                $.ajax({
+                    type: "POST",
+                    url: "/verifyUser",
+        
+                    data: { token: id_token },
+                    success: (response) => {
+                        // alert(response);
+                        window.location.replace(response);
+                    },
+                    error: (xhr) => {
+                        alert(xhr.responseText);
+                    }
+                });
+            }).catch((err) => {
+                console.log(err);
+            });
+        }</script>
+       
+
     <style>
         /* Fix background-color in web */
         body {
@@ -89,7 +125,7 @@
 
                 <!--btn login-->
                 <div class="text-center">
-                    <button type="button" class="btn btn-outline-dark btn-lg" id="btnLogin"><img src="https://img.icons8.com/plasticine/200/000000/google-logo.png"/ style="width: 10%;"> Login as google
+                    <button type="button"  onclick="signIn()" class="btn btn-outline-dark btn-lg" id="btnLogin"><img src="https://img.icons8.com/plasticine/200/000000/google-logo.png"/ style="width: 10%;"> Login as google
                 </button>
                 </div>
                 </form>
