@@ -110,12 +110,66 @@ app.get('/getResourcelist', (req, res)=>{
   db.query(sql, (err,result) =>{
     
     if (err) {
-      console.log(err)
+      //console.log(err)
      return res.status(500).send("DB server error");
     } 
     
     res.json(result);
   
+  });
+});
+
+//insert request into db *not done yet*
+app.post('/SendRequestDetail', (req, res)=> {
+  let detail = req.body;
+  console.log(detail);
+  
+  const sql ="INSERT INTO request(`User_User_ID`, `Request_Reason`, `Request_status`) VALUES (?,?,0)" //not done yet
+  db.query(sql,[detail.userID, detail.reason], (err, result)=>{
+    console.log("Inserting requst into DB...")
+    if (err) {
+      //console.log(err)
+     return res.status(500).send("DB server error");
+    };
+    if(result.affectedRows != 1) {
+      return res.status(500).send("Send request Failed");
+    };
+    insertRequestDetail(result.insertId, detail); //insert into Request detail table
+    res.send('Your request has been sent');
+  });
+//TODO : complete insertRequestDetail function
+ function insertRequestDetail(requestId, detailList){
+  console.log(detailList);
+  const sql = "INSERT INTO RequestINSERT INTO `request detail`(`Request_User_User_ID`, `Request_Request_ID`, `Resource_Resource_ID`, `Resource_quantity`) VALUES (?,?,?,?)"
+  for(i in detailList.resourceID){
+    db.query(sql, [detailList.userID, requestId, detailList.resourceID[i], detailList.amount[i]],(err, result)=>{
+      if (err) {
+        //console.log(err)
+       return res.status(500).send("DB server error");
+      };
+      if(result.affectedRows != 1) {
+        return res.status(500).send("Send request Failed");
+      };
+    });
+  }
+  }
+});
+
+//get request history for specific user
+app.get('/requestHistory', (req,res)=>{
+  let userId = req.body;
+  const sql=`SELECT rq.Request_ID, rq.User_User_ID, rq.Request_Reason, rq.Request_status, rq.Request_Date, rd.Resource_quantity
+  FROM request rq JOIN requestdetail rd
+  ON rq.User_User_ID = rd.User_User_ID
+  WHERE rq.User_User_ID = ?`
+  db.query(sql, [userId],(err,result) =>{
+    
+    if (err) {
+      //console.log(err)
+     return res.status(500).send("DB server error");
+    } 
+    console.log(result);
+    //res.json(result);
   });
 });
 

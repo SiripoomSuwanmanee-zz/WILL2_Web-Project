@@ -9,4 +9,12 @@ content-type: application/json
 
 ###
 
-GET http://localhost:3000/getResourcelist
+POST http://localhost:3000/SendRequestDetail
+content-type: application/json
+
+{
+    "userID":"1",
+    "reason":"test",
+    "resourceID":["1","2"],
+    "amount":["5","5"]
+}
