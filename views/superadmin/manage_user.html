@@ -179,11 +179,13 @@
                 $("#modalManage").modal("show");
                 $("#textinputemail").val();
                 $("#textinputname").val();
+                $("#textinputrole").val();
             });
             //accept btn in modal
             $("#acceptbtn").on('click', function () {
                 const email = $("#textinputemail").val();
                 const name = $("#textinputname").val();
+                const role = $("#textinputrole").val();
                 let check;
                 for (let i = 0; i < dataSet.length; i++) {
                     if (dataSet[i].name == name) {
@@ -198,7 +200,7 @@
                         text: 'โปรดตรวจสอบอีกครั้ง!',
                     });
                 
-                } else if (name == "" || email == "" ) {
+                } else if (name == "" || email == "" || role =="") {
                     Swal.fire({
                         icon: 'error',
                         title: 'เพิ่มรายการไม่สำเร็จ',
@@ -208,6 +210,7 @@
                     dataSet.push({
                         "name": name,
                         "email": email,
+                        "role" : role,
                     });
 
                     Swal.fire(
@@ -216,7 +219,7 @@
                         'success'
                 )
                 table.clear();
-                table.row.add(dataSet).draw();
+                table.rows.add(dataSet).draw();
                 }
                 $("#modalManage").modal('hide');
                 
@@ -318,6 +321,13 @@
                         <div class="row mx-auto ">
                             <label class="col-md-4 control-label">Name:</label>
                             <input id="textinputname" name="textinput" type="text" placeholder="add name"
+                                class="form-control col-4 input-md">
+
+                        </div>
+
+                        <div class="row mx-auto ">
+                            <label class="col-md-4 control-label">Role:</label>
+                            <input id="textinputrole" name="textinput" type="text" placeholder="add role"
                                 class="form-control col-4 input-md">
 
                         </div>
