@@ -16,12 +16,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs');
 
-app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "login.ejs"));
-});
 
-app.get("/admin login", function(req, res){
-    res.sendFile(path.join(__dirname, ("login_ui.html")));
+
+app.get("/", function(req, res){
+    res.sendFile(path.join(__dirname, ("/login_ui.html")));
 });
 
 app.get("/admin inventory", function(req, res){

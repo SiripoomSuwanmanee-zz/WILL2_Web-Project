@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res){
-    res.render('login');
+    res.sendFile(path.join(__dirname, ("/views/login_ui.html")));
 });
 
 const port = 3000;
