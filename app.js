@@ -7,7 +7,7 @@ const session = require("express-session");
 const { MemoryStore } = require("express-session");
 const Memorystore = require("memorystore")(session);
 const checkUser = require('./checkUser');
-const { database } = require("d:/saloon pj/projectsaloon/config/dbconfig");
+// const { database } = require("d:/saloon pj/projectsaloon/config/dbconfig");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
