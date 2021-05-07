@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Inventory</title>
+    <link href="../../dist/css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
+        crossorigin="anonymous"></script>
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.10.1/sweetalert2.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.10.1/sweetalert2.min.js"></script>
+
+    <!--Chart CDN-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.3.2/bootbox.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    
+    <style>
+        body {
+            font-family: supermarket;            
+        }
+
+        th {
+            background-color: #3FACCE;
+            color: white;
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+        .btn-blue {
+            background-color: #004FAB;
+            font-size: 15px;
+            font-weight: normal;
+        }
+
+        .btn-yellow {
+            background-color: #E99B52;
+            font-size: 15px;
+            font-weight: normal;
+        }
+    </style>
+
+    <script>
+        
+        $(document).ready(function () {
+            let ListTable = [
+
+                { id: 101000061, name: "เครื่องเหลาดินสอ",  type: "ไฟฟ้า", unit: "MAC", remain: 56 },
+                { id: 101000062, name: "เชือกขาว ขนาด 1 กก.", type: "โฆษณา", unit: "ROL", remain: 30 , },
+                { id: 101000063, name: "เชือกขาวแดง",type: "ของที่ระลึก", unit: "ROL", remain: 20},
+                { id:  101000064, name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ", type: "คอมพิวเตอร์", unit: "CAS", remain: 35 },
+                { id:  101000065, name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ", type: "คอมพิวเตอร์" ,unit: "CAS", remain: 15 },
+                { id: 101000066, name: "ซองจดหมายสีน้ำตาล C5", type: "ของที่ระลึก" , unit: "CAS", remain: 24 },
+                { id:  101000067, name: "ซองพลาสติกเติมแฟ้มโชว์เอกสาร", type: "ของที่ระลึก" ,unit: "PAC", remain: 56 },
+                { id:  101000069, name: "ซองสีน้ำตาล C4 (ขยายข้าง) มฟล.ภาษาไทย", type: "ของที่ระลึก" , unit: "CAS", remain: 26 },
+                { id:  101000070, name: "ซองสีน้ำตาล C4 (ไม่ขยายข้าง) มฟล.ภาษาไทย", type: "ของที่ระลึก" , unit: "CAS", remain: 33 },
+                { id:  101000061, name: "เครื่องเหลาดินสอ", type: "ของที่ระลึก" , unit: "MAC", remain: 56 },
+                { id:  101000062, name: "เชือกขาว ขนาด 1 กก.",type: "ของที่ระลึก" , unit: "ROL", remain: 30 },
+                { id:  101000063, name: "เชือกขาวแดง",type: "ของที่ระลึก" , unit: "ROL", remain: 20  },
+                { id:  101000064, name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ",type: "ของที่ระลึก" , unit: "CAS", remain: 35  },
+                { id:  101000065, name: "ซองจดหมายขาว DL มฟล. ภาษาอังกฤษ",type: "ของที่ระลึก" , unit: "CAS", remain: 15  },
+                { id:  101000066, name: "ซองจดหมายสีน้ำตาล C5",type: "ของที่ระลึก" , unit: "CAS", remain: 24  },
+                { id:  101000067, name: "ซองพลาสติกเติมแฟ้มโชว์เอกสาร",type: "ของที่ระลึก" , unit: "PAC", remain: "56" },
+                { id: 101000069, name: "ซองสีน้ำตาล C4 (ขยายข้าง) มฟล.ภาษาไทย",type: "ของที่ระลึก" , unit: "CAS", remain: 26  },
+                { id:  101000070, name: "ซองสีน้ำตาล C4 (ไม่ขยายข้าง) มฟล.ภาษาไทย",type: "ของที่ระลึก" , unit: "CAS", remain: 33  },
+
+            ];
+
+            //Create
+            var table = $("#ListTable").DataTable({
+
+                data: ListTable,
+                columnDef: [{
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": 0,
+                }], "order": [[1, 'asc']],
+
+                columns: [                   
+                    {title: "ลำดับ", defaultContent: ""},
+                    { data: "id", title: "รหัสวัสดุ" },
+                    { data: "name", title: "คำอธิบายวัสดุ" }, 
+                    { data : "type", title: "หมวดหมู่"},  
+                    { data: "unit", title: "หน่วยนับ" },                  
+                    { data: "remain", title: "จำนวนคงคลัง" },
+                    {
+                        render: function (data, type, row, meta) {
+                            let tmp = `
+                                     <div class="row mx-auto justify-content-center">
+                                     <div class="ml-2">
+                                        <button class="btn btn-yellow text-white text-center" data-toggle="modal" id="btnEdit" data-target="#modalManage" style=" border-radius: 30px;">แก้ไขข้อมูล</button> <button class="btn btn-blue text-white text-center" id="btnAmount" data-toggle="modal" data-target= "#modalAmount" style=" border-radius: 30px;">แก้ไขจำนวน</button>
+                                       </div>               
+                                </div>`;
+                            return tmp;
+
+                        }
+                    }
+                ]
+               
+            });
+
+            $("#totalReq").html(ListTable.length);
+            table.on('order.dt search.dt', function () {
+                table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+                    cell.innerHTML = i + 1;
+                });
+            }).draw();
+
+
+            //function selectStatus
+            function selectCategory(selectArray, tb) {
+                const select = `<option value="" selected>ทั้งหมด</option>`;
+                let option = ``;
+                for (i in selectArray) {
+                    option += `<option>${selectArray[i].Status}</option>`;
+                }
+                tb.html(tb.html() + select + option);
+            }
+             //function Create SelectStatus
+             let select_Type = $("#SelectType");
+            selectCategory(selectType, select_Type);
+
+            //function Create SelectType
+            let select_typeaddnew = $("#SelectTypeAddnew");
+            selectCategory(selectType, select_typeaddnew);
+
+
+
+            $("#btnAddnew").click(function(){
+                $("modalAdd").modal("show")
+                $("#txtAddcode").val("");
+                $("#txtAdddes").val("");
+                $("#txtAddunit").val("");
+                $("#SelectTypeAddnew").val(type);       
+            })
+
+            $("#btn-Addnew").click(function(){
+                const id = $("#txtAddcode").val();
+                const name = $("#txtAdddes").val();
+                const unit = $("#txtAddunit").val();
+                const type = $("#SelectTypeAddnew").val();
+
+                let check;
+                for(let i = 0; i < ListTable.length; i++){
+                    if(ListTable[i].id == id){
+                        check = false;
+                        break;
+                    }
+                }
+
+                if(check == false){
+                    Swal.fire({
+                        icon : "error",
+                        title:"รหัสวัสดุเหมือนกัน",
+                        text:"กรูณาลองใหม่อีกครั้ง",
+                    });
+                }else if (id == "" || name == "" || unit == ""|| type == "" ){
+                    Swal.fire({
+                        icon: 'error',
+                        title :"เพิ่มรายการไม่สำเร็จ",
+                        text: "ตรวจสอบอีกครั้ง"
+                    })
+                } else{
+                    ListTable.push({
+
+                        id : id,
+                        name : name,
+                        unit : unit,
+                        type : type,                        
+                        remain : 0
+
+                    });
+
+                    Swal.fire({
+                        icon : 'success',
+                        title :'เพิ่มรายการวัสดุสำเร็จ',
+                        html :  ""
+                    })
+                    table.clear();
+                    table.row.add(ListTable).draw();
+                }
+
+
+            })
+
+
+
+            var selectEditData;
+            $("#ListTable").on("click","#btnEdit",function(){
+                const currentRow = $(this).parents("tr");
+                const data = table.row(currentRow).data();
+                selectEditData = data;
+                $("#txtManagecode").val(data.id);
+                $("#txtManagedes").val(data.name);
+                $("#txtManageunit").val(data.unit);
+
+            })
+
+
+            var rowID;
+            $("#ListTable").on("click", "#btnAmount", function () {
+
+                const currentRow = $(this).parents("tr");
+                const data = table.row(currentRow).data();
+                rowID = table.row(currentRow).index();
+
+                //Show each user data from row selected
+                $("#txtAmountcode").html(ListTable[rowID].id);
+                $("#txtAmountdes").html(ListTable[rowID].name);
+                $("#txtAmountunit").html(ListTable[rowID].unit);
+                $("#txtAmountremain").html(ListTable[rowID].remain);
+
+            })
+            var amountdata
+            $("#ListTable").on("click",  function () {
+
+                const currentRow = $(this).parents("tr");
+                const data = table.row(currentRow).data();
+                amountdata = table.row(currentRow).index();
+
+                //Show each user data from row selected
+                $("#txtManagecode").html(ListTable[rowID].id);
+                $("#txtAmountdes").html(ListTable[rowID].name);
+                $("#txtAmountunit").html(ListTable[rowID].unit);
+                $("#txtAmountremain").html(ListTable[rowID].remain);
+
+            })
+
+            function sum() {
+                var Remain = $('#txtAmountremain').val(data.remain);
+                var editAmount = $('#EditAmount').val();
+                var result = Remain + editAmount;
+                if (!isNaN(result)) {
+                    $('#txtresult').val(result)
+                }
+                console.log(Remain)
+                console.log(editAmount)
+            }           
+
+        });
+
+
+          ///array of SelectStatus
+          var selectType = [
+            { Status: "สำนักงาน " },
+            { Status: "ไฟฟ้า" },
+            { Status: "คอมพิวเตอร์" },
+            { Status: "โฆษณา" },
+            { Status: "งานบ้าน" },
+            { Status: "เครื่องแต่งกาย" },
+            { Status: "ของที่ระลึก" }
+        ]
+
+       
+
+    </script>
+
+</head>
+
+<body class="sb-nav-fixed">
+
+
+
+
+    <nav class="sb-topnav navbar navbar-expand " style="background-color: #2B7AA0;">
+        <img src="../../img/it-logo.png" alt="" style="width: 50px;">
+        <a class="navbar-brand text-white" href="">ระบบเบิกวัสดุสำนักเทคโนโลยีสารสนเทศ</a>
+        
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group mb-2">
+                <label class="control-label text-white mt-2 mr-2" for="">
+                    <h5 class="mr-2">Admin</h5> 
+                </label>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false"></a>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav" class="active">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">MENU</div>
+                        <a class="nav-link active" href="Admin's resource list.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
+                            คลังวัสดุ
+                        </a>
+
+                        <a class="nav-link" href="Admin's request.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            รายการร้องขอวัสดุ
+
+                        </a>
+                        <a class="nav-link" href="Admin's history.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                            ประวัติการจ่ายวัสดุ
+
+                        </a>
+
+                        <a class="nav-link" href="Admin's statistics.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-pie"></i></div>
+                            สถิติการเบิกวัสดุ
+
+                        </a>
+
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer justify-content-center">
+                    <div class="small"><a class="nav-link" href="/views/login_ui.html"><button
+                                class="btn btn-blue text-white " style="width: 150px;"><i class="fas fa-door-open"></i> ออกจากระบบ
+                            </button></a> </div>
+
+                </div>
+
+            </nav>
+
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    <div class="mt-4 ml-4">
+                        <h1> คลังวัสดุ</h1>
+                    </div>
+
+                    <!-- dropdown-->
+                    <from>
+                        <label>หมวดหมู่วัสดุ</label>
+                        <select id="SelectType" class="form-control col-1 mb-3 "></select>
+                    </from>
+
+                    <form>
+                        <div class="row">
+                            <label class=" ml-3 mr-2">จำนวน</label>
+                            <p id="totalReq"></p>
+                            <label class=" ml-3 mr-2">รายการ</label>
+                        </div>
+
+                    </form>
+
+                    <div class="row mx-auto mt-4">
+                        <div class="col-sm-6">
+                            <button id="btnAddnew" class="btn btn-lg text-white ml-2" data-toggle="modal" data-target="#modalAdd"
+                                style="background-color:#004FAB; border-radius: 30px;">เพิ่มรายการวัสดุ </button>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="card mb-4 mt-4" style="border-radius: 20px;">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="ListTable" width="100%" cellspacing="0">
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+
+    <!-- Modal Add -->
+    <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">เพิ่มรายการวัสดุ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Text input-->                       
+                    <div class="form-group">
+                        <div class="row mx-auto ">
+                            <div class="col-md-4 d-flex justify-content-end">
+                                <label class=" form-label mt-2" >รหัสวัสดุ:</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input class="form-control" type="number" id="txtAddcode" style="border-radius: 10px;"  >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row mx-auto ">
+                            <div class="col-md-4 d-flex justify-content-end">
+                                <label class=" form-label mt-2" >ชื่อวัสดุ:</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" id="txtAdddes" style="border-radius: 10px;" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row mx-auto ">
+                            <div class="col-md-4 d-flex justify-content-end">
+                                <label class=" form-label mt-2" >หน่วยนับ:</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" id="txtAddunit" style="border-radius: 10px;" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row mx-auto ">
+                            <div class="col-md-4 d-flex justify-content-end">
+                                <label class=" form-label mt-2" >หมวดหมู่:</label>
+                            </div>
+                            <div class="col-md-8">
+                                <select id="SelectTypeAddnew" class="form-control col-5 mb-3 "></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                    <button id="btn-Addnew" type="button" class="btn btn-primary" data-dismiss="modal">บันทึก</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Amount -->
+    <div class="modal fade bd-example-modal-lg" id="modalAmount" tabindex="-1" role="dialog"
+        aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">แก้ไขจำนวน</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Text input-->
+                    <div class="row mx-auto justify-content-center">
+                        <div class="row col-12">
+                            <label class="control-label mr-3 col-2 float-right">รหัสวัสดุ:</label>
+                            <label class="control-label col-sm-6" id="txtAmountcode"></label>
+                        </div>
+                        <div class="row col-12">
+                            <label class="control-label mr-3  col-2">ชื่อวัสดุ:</label>
+                            <label class="control-label col-6" id="txtAmountdes"></label>
+                        </div>
+
+                        <div class="row col-12 ">
+                            <label class="control-label mr-3 col-2">หน่วยนับ:</label>
+                            <label class="control-label col-3" id="txtAmountunit"></label>
+                        </div>
+
+                        <div class="row col-12">
+                            <label class="control-label mr-3 col-2">จำนวนที่เหลือ:</label>
+                            <label class="control-label col-3" id="txtAmountremain"></label>
+                        </div>
+                    </div>
+                    <div class="row mx-auto justify-content-center mt-4">
+                        <label class="control-label mr-3 mt-2 " onkeyup="sum()">แก้ไขจำนวน:</label>
+                        <input type="number" class="form-control col-3" id="EditAmount" style="border-radius: 20px;">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                    <button type="button" class="btn btn-primary" id="saveamountbtn"
+                        data-dismiss="modal">บันทึก</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Moda Manage -->
+    <div class="modal fade bd-example-modal-md" id="modalManage" tabindex="-1" role="dialog"
+        aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">แก้ไขข้อมูล</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Text input-->                       
+                        <div class="form-group">
+                            <div class="row mx-auto ">
+                                <div class="col-md-4 d-flex justify-content-end">
+                                    <label class=" form-label mt-2" >รหัสวัสดุ:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input class="form-control" type="number" id="txtManagecode" style="border-radius: 10px;" disabled >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row mx-auto ">
+                                <div class="col-md-4 d-flex justify-content-end">
+                                    <label class=" form-label mt-2" >ชื่อวัสดุ:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input class="form-control" type="text" id="txtManagedes" style="border-radius: 10px;" >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row mx-auto ">
+                                <div class="col-md-4 d-flex justify-content-end">
+                                    <label class=" form-label mt-2" >หน่วยนับ:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input class="form-control" type="text" id="txtManageunit" style="border-radius: 10px;" >
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                </div>
+                        
+
+                        
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                    <button type="button" class="btn btn-primary" id="savebtn" data-dismiss="modal">บันทึก</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
