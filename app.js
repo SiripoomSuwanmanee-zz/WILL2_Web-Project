@@ -186,6 +186,19 @@ app.get('/superadmin', (req, res)=>{
   });
 });
 
+app.get('advisor', (req, res)=>{
+  const sql = "SELECT User_ID, User_Email, User_NAME, User_Role, Add_date FROM user"
+  db.query(sql, (err, result)=>{
+    if (err) {
+      //console.log(err)
+     return res.status(500).send("DB server error");
+    }
+    else{
+      res.json(result);
+    } 
+  });
+});
+
 
 
 //============== PORT ==============
