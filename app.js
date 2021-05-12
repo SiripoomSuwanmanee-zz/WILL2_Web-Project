@@ -78,7 +78,21 @@ app.post("/verifyUser", (req, res) => {
               role: result[0].User_Role,
               status: result[0].User_status,
             }; //save user data to session
+
             res.send("/welcome");
+
+            //res.send("/welcome");
+            res.json({user: req.session.user, forwardUrl: "/welcome" });
+          }else if(result[0].User_Role == 2){
+            req.session.user = {
+              username: payload.name,
+              userID: result[0].User_ID,
+              role: result[0].User_Role,
+              status: result[0].User_status,
+            }; //save user data to session
+            //res.send("/welcome");
+            res.json({user: req.session.user, forwardUrl: "/welcome" });            
+
           }
         });
       })
@@ -122,7 +136,11 @@ app.get('/getResourcelist', (req, res)=>{
 //insert request into db *not done yet*
 app.post('/SendRequestDetail', (req, res)=> {
   let detail = req.body;
+
   console.log(detail);
+
+  //console.log(detail);
+
   
   const sql ="INSERT INTO request(`User_User_ID`, `Request_Reason`, `Request_status`) VALUES (?,?,0)" //not done yet
   db.query(sql,[detail.userID, detail.reason], (err, result)=>{
@@ -134,6 +152,7 @@ app.post('/SendRequestDetail', (req, res)=> {
     if(result.affectedRows != 1) {
       return res.status(500).send("Send request Failed");
     };
+
     insertRequestDetail(result.insertId, detail); //insert into Request detail table
     res.send('Your request has been sent');
   });
@@ -155,6 +174,39 @@ app.post('/SendRequestDetail', (req, res)=> {
   }
 });
 
+    insertRequestDetail(result.insertId, detail, res); //insert into Request detail table
+  //   res.send('Your request has been sent');
+  // insertRequestDetail(9, detail, res);
+  });
+});
+  
+
+//insertRequestDetail function
+ function insertRequestDetail(requestId, detailList, res){
+  // INSERT INTO `requestdetail`(`Request_User_User_ID`, `Request_Request_ID`, `Resource_Resource_ID`, `Resource_quantity`) VALUES (1,9,101000001,2), (1,9,101000002,5) 
+  let sql = "INSERT INTO `requestdetail`(`Request_User_User_ID`, `Request_Request_ID`, `Resource_Resource_ID`, `Resource_quantity`) VALUES ";
+  let row = "(" + detailList.userID + "," + requestId + ",";
+  for(let i=0; i<detailList.resourceID.length; i++) {
+    // detailList.resourceID[i]
+    // detailList.amount[i]
+    if(i == detailList.resourceID.length - 1) {
+      sql += row + detailList.resourceID[i] + "," + detailList.amount[i] + ")";
+    }
+    else {
+      sql += row + detailList.resourceID[i] + "," + detailList.amount[i] + "), ";
+    }
+  }
+  // console.log(sql);
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send("DB server error");
+    };
+    res.send('Inserted done');
+  });
+}
+
+
 //get request history for specific user
 app.get('/requestHistory', (req,res)=>{
   let userId = req.body;
@@ -168,6 +220,7 @@ app.get('/requestHistory', (req,res)=>{
       //console.log(err)
      return res.status(500).send("DB server error");
     } 
+
     console.log(result);
     //res.json(result);
   });
@@ -196,6 +249,110 @@ app.get('/advisor', (req, res)=>{
     else{
       res.json(result);
     }
+
+    res.json(result);
+  });
+});
+
+//================================ Admin service ================================
+
+//INSERT new resource into DB
+app.post('/insertResource',  (req, res)=> {
+  let newResource = req.body;
+
+  const sql="INSERT INTO `resource`(`Resource_ID`, `Resource_Name`, `Amount_Remain`, `Unit`) VALUES (?,?,?,?)"
+  db.query(sql,[newResource.resourceID, newResource.name, newResource.amount, newResource.unit], (err, result)=>{
+    console.log("Inserting Resource into DB...")
+    if (err) {
+      //console.log(err)
+     return res.status(500).send("DB server error");
+    };
+    if(result.affectedRows != 1) {
+      return res.status(500).send("Failed to input to Database");
+    };
+    
+    res.send('Done');
+  });
+});
+
+//edit resource detail
+app.post('/editResource',  (req, res)=> {
+  let resourceEdit = req.body;
+  const sql="UPDATE `resource` SET `Resource_Name`=?,`Unit`=? WHERE `Resource_ID`=?"
+  db.query(sql,[resourceEdit.name, resourceEdit.unit, resourceEdit.resourceID], (err, result)=>{
+    console.log("Updating DB...")
+    if (err) {
+      //console.log(err)
+     return res.status(500).send("DB server error");
+    };
+    if(result.affectedRows != 1) {
+      return res.status(500).send("Failed to Update Database");
+    };
+    res.send('Done');
+  });
+});
+
+//edit resource amount in DB
+app.post('/editResourceAmount',  (req, res)=> {
+  let resourceEdit = req.body;
+  const sql="UPDATE `resource` SET `Amount_Remain`=? WHERE `Resource_ID`=?"
+  db.query(sql,[resourceEdit.amount, resourceEdit.resourceID], (err, result)=>{
+    console.log("Updating DB...")
+    if (err) {
+      //console.log(err)
+     return res.status(500).send("DB server error");
+    };
+    if(result.affectedRows != 1) {
+      return res.status(500).send("Failed to Update Database");
+    };
+    editResourceAmountTransaction(resourceEdit,res);
+  });
+});
+//stockmanage
+function editResourceAmountTransaction(transaction,res){ 
+  const sql='INSERT INTO stockmanage (`User_User_ID`, `Stock Manage_Type`) VALUES (?,?)'
+  
+  db.query(sql,[transaction.userID,transaction.type],(err,result)=>{  
+    
+    if (err) {
+      console.log(err)
+     return res.status(500).send("DB server error");
+    };
+    if(result.affectedRows != 1) {
+      return res.status(500).send("Failed to record transaction into DB");
+    };
+    editResourceAmountTransactionDetail(result.insertId, transaction,res) 
+});
+}
+//manage detail
+function editResourceAmountTransactionDetail(id,transaction,res){
+  console.log(id)
+  const sql="INSERT INTO `stockmanagedetail`(`Resource_Resource_ID`, `Stock Manage_Stock Manage_ID`, `Amount`) VALUES (?,?,?)"
+  db.query(sql,[transaction.resourceID, id, transaction.amount],(err,result)=>{
+    if (err) {
+      //console.log(err)
+     return res.status(500).send("DB server error");
+    };
+    if(result.affectedRows != 1) {
+      return res.status(500).send("Failed to record transaction into DB");
+    };
+    res.send('ok');
+  });
+}
+
+//get request history detail for specific user
+app.get('/requestHistory', (req,res)=>{
+  const sql=`SELECT rq.Request_ID, rq.User_User_ID, rq.Request_Reason, rq.Request_status, rq.Request_Date, rd.Resource_quantity
+  FROM request rq JOIN requestdetail rd
+  ON rq.User_User_ID = rd.Request_User_User_ID
+  WHERE rq.User_User_ID = ?`
+  db.query(sql, [userId],(err,result) =>{   
+    if (err) {
+      //console.log(err)
+     return res.status(500).send("DB server error");
+    } 
+    res.json(result);
+
   });
 });
 

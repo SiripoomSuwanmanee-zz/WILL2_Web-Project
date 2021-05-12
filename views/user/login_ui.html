@@ -52,28 +52,7 @@
     </style>
 
 
-    <!--<script>
-        $(document).ready(function () {
-            $("#btnLogin").click(function () {
-                const username = $("#InputEmail").val();
-                const password = $("#InputPassword").val();
-                
-                // connect to /login service 
-                $.ajax({
-                    method: "POST",
-                    url: "/api/login",
-                    data: { "username": username, "password": password },
-                    success: function (data, state) {
-                        sessionStorage.user_id = data.user_id;
-                        window.location.replace(data.forwardUrl)
-                    },
-                    error: function (xhr, state, error) {
-                        Swal.fire(xhr.responseText);
-                    }
-                });
-            });
-        });//InputEmail  InputPassword
-    </script>-->
+ 
 </head>
 
 <body>
