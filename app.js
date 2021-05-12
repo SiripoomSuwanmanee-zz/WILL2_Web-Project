@@ -132,7 +132,11 @@ app.get('/getResourcelist', (req, res)=>{
 //insert request into db *not done yet*
 app.post('/SendRequestDetail', (req, res)=> {
   let detail = req.body;
+
+  console.log(detail);
+
   //console.log(detail);
+
   
   const sql ="INSERT INTO request(`User_User_ID`, `Request_Reason`, `Request_status`) VALUES (?,?,0)" //not done yet
   db.query(sql,[detail.userID, detail.reason], (err, result)=>{
@@ -144,12 +148,34 @@ app.post('/SendRequestDetail', (req, res)=> {
     if(result.affectedRows != 1) {
       return res.status(500).send("Send request Failed");
     };
-    insertRequestDetail(result.insertId, detail, res); //insert into Request detail table
+
+    insertRequestDetail(result.insertId, detail); //insert into Request detail table
+    res.send('Your request has been sent');
+  });
+//TODO : complete insertRequestDetail function
+ function insertRequestDetail(requestId, detailList){
+  console.log(detailList);
+  const sql = "INSERT INTO RequestINSERT INTO `request detail`(`Request_User_User_ID`, `Request_Request_ID`, `Resource_Resource_ID`, `Resource_quantity`) VALUES (?,?,?,?)"
+  for(i in detailList.resourceID){
+    db.query(sql, [detailList.userID, requestId, detailList.resourceID[i], detailList.amount[i]],(err, result)=>{
+      if (err) {
+        //console.log(err)
+       return res.status(500).send("DB server error");
+      };
+      if(result.affectedRows != 1) {
+        return res.status(500).send("Send request Failed");
+      };
+    insertRequestDetail(result.insertId, detail, res);
+    });
+  
+  }
+  }
+});
+
+     //insert into Request detail table
   //   res.send('Your request has been sent');
   // insertRequestDetail(9, detail, res);
-  });
-});
-  
+
 
 //insertRequestDetail function
  function insertRequestDetail(requestId, detailList, res){
@@ -189,6 +215,36 @@ app.get('/requestHistory', (req,res)=>{
       //console.log(err)
      return res.status(500).send("DB server error");
     } 
+
+    console.log(result);
+    //res.json(result);
+  });
+});
+
+app.get('/superadmin', (req, res)=>{
+  const sql = "SELECT User_ID, User_Email, User_NAME, User_Role, Add_date FROM user"
+  db.query(sql, (err, result)=>{
+    if (err) {
+      //console.log(err)
+     return res.status(500).send("DB server error");
+    }
+    else{
+      res.json(result);
+    }
+  });
+});
+
+app.get('/advisor', (req, res)=>{
+  const sql = "SELECT User_ID, User_Email, User_NAME, User_Role, Add_date FROM user"
+  db.query(sql, (err, result)=>{
+    if (err) {
+      //console.log(err)
+     return res.status(500).send("DB server error");
+    }
+    else{
+      res.json(result);
+    }
+
     res.json(result);
   });
 });
