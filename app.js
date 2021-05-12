@@ -5,7 +5,7 @@ const { OAuth2Client } = require("google-auth-library");
 const db = require("./config/db");
 const session = require("express-session");
 const { MemoryStore } = require("express-session");
-const Memorystore = require("memorystore")(session);
+//const Memorystore = require("memorystore")(session);
 const checkUser = require('./checkUser');
 const { database } = require("d:/saloon pj/projectsaloon/config/dbconfig");
 
@@ -23,7 +23,7 @@ app.use(session({
   }),
   secret: process.env.SESSION_SECRET,
   resave: true,
-  saveUninitialized: false
+  saveUninitialized: true
 }));
 
 //==== Page Route ====
@@ -78,8 +78,8 @@ app.post("/verifyUser", (req, res) => {
               role: result[0].User_Role,
               status: result[0].User_status,
             }; //save user data to session
-            //res.send("/welcome");
-            res.json({user: req.session.user, forwardUrl: "/welcome" });
+            res.send("/welcome");
+            //res.json({user: req.session.user, forwardUrl: "/welcome" });
           }else if(result[0].User_Role == 2){
             req.session.user = {
               username: payload.name,
@@ -87,8 +87,8 @@ app.post("/verifyUser", (req, res) => {
               role: result[0].User_Role,
               status: result[0].User_status,
             }; //save user data to session
-            //res.send("/welcome");
-            res.json({user: req.session.user, forwardUrl: "/welcome" });            
+            res.send("/welcome");
+            //res.json({user: req.session.user, forwardUrl: "/welcome" });            
           }
         });
       })
