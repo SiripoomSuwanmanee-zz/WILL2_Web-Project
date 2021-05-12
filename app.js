@@ -23,7 +23,7 @@ app.use(session({
   }),
   secret: process.env.SESSION_SECRET,
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: false
 }));
 
 //==== Page Route ====
