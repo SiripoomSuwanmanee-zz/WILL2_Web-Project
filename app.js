@@ -182,11 +182,11 @@ app.get('/superadmin', (req, res)=>{
     }
     else{
       res.json(result);
-    } 
+    }
   });
 });
 
-app.get('advisor', (req, res)=>{
+app.get('/advisor', (req, res)=>{
   const sql = "SELECT User_ID, User_Email, User_NAME, User_Role, Add_date FROM user"
   db.query(sql, (err, result)=>{
     if (err) {
@@ -195,7 +195,7 @@ app.get('advisor', (req, res)=>{
     }
     else{
       res.json(result);
-    } 
+    }
   });
 });
 
