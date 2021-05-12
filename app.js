@@ -78,9 +78,6 @@ app.post("/verifyUser", (req, res) => {
               role: result[0].User_Role,
               status: result[0].User_status,
             }; //save user data to session
-
-            res.send("/welcome");
-
             //res.send("/welcome");
             res.json({user: req.session.user, forwardUrl: "/welcome" });
           }else if(result[0].User_Role == 2){
@@ -92,7 +89,6 @@ app.post("/verifyUser", (req, res) => {
             }; //save user data to session
             //res.send("/welcome");
             res.json({user: req.session.user, forwardUrl: "/welcome" });            
-
           }
         });
       })
@@ -136,11 +132,7 @@ app.get('/getResourcelist', (req, res)=>{
 //insert request into db *not done yet*
 app.post('/SendRequestDetail', (req, res)=> {
   let detail = req.body;
-
-  console.log(detail);
-
   //console.log(detail);
-
   
   const sql ="INSERT INTO request(`User_User_ID`, `Request_Reason`, `Request_status`) VALUES (?,?,0)" //not done yet
   db.query(sql,[detail.userID, detail.reason], (err, result)=>{
@@ -152,28 +144,6 @@ app.post('/SendRequestDetail', (req, res)=> {
     if(result.affectedRows != 1) {
       return res.status(500).send("Send request Failed");
     };
-
-    insertRequestDetail(result.insertId, detail); //insert into Request detail table
-    res.send('Your request has been sent');
-  });
-//TODO : complete insertRequestDetail function
- function insertRequestDetail(requestId, detailList){
-  console.log(detailList);
-  const sql = "INSERT INTO RequestINSERT INTO `request detail`(`Request_User_User_ID`, `Request_Request_ID`, `Resource_Resource_ID`, `Resource_quantity`) VALUES (?,?,?,?)"
-  for(i in detailList.resourceID){
-    db.query(sql, [detailList.userID, requestId, detailList.resourceID[i], detailList.amount[i]],(err, result)=>{
-      if (err) {
-        //console.log(err)
-       return res.status(500).send("DB server error");
-      };
-      if(result.affectedRows != 1) {
-        return res.status(500).send("Send request Failed");
-      };
-    });
-  }
-  }
-});
-
     insertRequestDetail(result.insertId, detail, res); //insert into Request detail table
   //   res.send('Your request has been sent');
   // insertRequestDetail(9, detail, res);
@@ -206,7 +176,6 @@ app.post('/SendRequestDetail', (req, res)=> {
   });
 }
 
-
 //get request history for specific user
 app.get('/requestHistory', (req,res)=>{
   let userId = req.body;
@@ -220,36 +189,6 @@ app.get('/requestHistory', (req,res)=>{
       //console.log(err)
      return res.status(500).send("DB server error");
     } 
-
-    console.log(result);
-    //res.json(result);
-  });
-});
-
-app.get('/superadmin', (req, res)=>{
-  const sql = "SELECT User_ID, User_Email, User_NAME, User_Role, Add_date FROM user"
-  db.query(sql, (err, result)=>{
-    if (err) {
-      //console.log(err)
-     return res.status(500).send("DB server error");
-    }
-    else{
-      res.json(result);
-    }
-  });
-});
-
-app.get('/advisor', (req, res)=>{
-  const sql = "SELECT User_ID, User_Email, User_NAME, User_Role, Add_date FROM user"
-  db.query(sql, (err, result)=>{
-    if (err) {
-      //console.log(err)
-     return res.status(500).send("DB server error");
-    }
-    else{
-      res.json(result);
-    }
-
     res.json(result);
   });
 });
@@ -352,7 +291,6 @@ app.get('/requestHistory', (req,res)=>{
      return res.status(500).send("DB server error");
     } 
     res.json(result);
-
   });
 });
 
