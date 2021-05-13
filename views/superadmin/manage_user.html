@@ -247,100 +247,115 @@
                 </div>
             </div>
         </form>
-        <!-- Navbar-->
 
+        <!-- Navbar-->
         <ul class="navbar-nav ml-auto ml-md-0">
             <li class="nav-item dropdown">
                 <a class="nav-link" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false"></a>
             </li>
         </ul>
-
-
     </nav>
-    <div class="sb-sidenav-footer justify-content-center">
-        <div class="small"><a class="nav-link" href="login_ui.html"><button class="btn btn-blue text-white text-lg"
-                    style="width: 150px;"><i class="fas fa-door-open"></i> ออกจากระบบ
-                </button></a> </div>
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid">
-                        <div class="mt-4 ml-4">
-                            <h1> รายการสั่งเบิก </h1>
-                        </div>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">MENU</div>
+                        <a class="nav-link active " href="manage_user.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
+                            จัดการผู้ใช้งาน
+                        </a>
 
-                        <div class="col-sm-6">
-                            <button class="btn btn-lg text-white ml-2" id="addbtn" data-toggle="modal"
-                                data-target="#modalManage" style="background-color:#004FAB; border-radius: 30px;">Add
-                                user</button>
-                        </div>
-                        <div class="card mb-4 mt-4">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
+                 
 
-                                    </table>
-                                </div>
+
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer justify-content-center">
+                    <div class="small"><a class="nav-link" href="login_ui.html"><button
+                                class="btn btn-blue text-white text-lg" style="width: 150px;"><i class="fas fa-door-open"></i> ออกจากระบบ
+                            </button></a> </div>
+
+                </div>
+
+            </nav>
+
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    <div class="mt-4 ml-4">
+                        <h1> จัดการผู้ใช้งาน</h1>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <button class="btn btn-lg text-white ml-2" id="addbtn" data-toggle="modal"
+                            data-target="#modalManage" style="background-color:#004FAB; border-radius: 30px;">Add
+                            user</button>
+                    </div>
+
+                    <div class="card mb-4 mt-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
+
+                                </table>
+                                
                             </div>
-
                         </div>
                     </div>
+                </div>
+            </main>
 
-                </main>
-                <div class="row">
-                    <div class="small"><a class="nav-link" href="/views/login_ui.html"><button
-                                class="btn btn-blue text-white text-lg"><i class="fas fa-door-open"></i> ออกจากระบบ
-                            </button></a>
-                    </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalManage" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Text input-->
+                <div class="row mx-auto ">
+                    <label class="col-md-4 control-label">New email's user:</label>
+                    <input id="textinputemail" name="textinput" type="text" placeholder="someone@email.com"
+                        class="form-control col-4 mb-2 input-md">
+
+                </div>
+
+                <div class="row mx-auto ">
+                    <label class="col-md-4 control-label">Name:</label>
+                    <input id="textinputname" name="textinput" type="text" placeholder="add name"
+                        class="form-control col-4 input-md">
+
+                </div>
+
+                <div class="row mx-auto ">
+                    <label class="col-md-4 control-label">Role:</label>
+                    <input id="textinputrole" name="textinput" type="text" placeholder="add role"
+                        class="form-control col-4 input-md">
+
                 </div>
 
             </div>
-
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="modalManage" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Add User</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Text input-->
-                        <div class="row mx-auto ">
-                            <label class="col-md-4 control-label">New email's user:</label>
-                            <input id="textinputemail" name="textinput" type="text" placeholder="someone@email.com"
-                                class="form-control col-4 mb-2 input-md">
-
-                        </div>
-
-                        <div class="row mx-auto ">
-                            <label class="col-md-4 control-label">Name:</label>
-                            <input id="textinputname" name="textinput" type="text" placeholder="add name"
-                                class="form-control col-4 input-md">
-
-                        </div>
-
-                        <div class="row mx-auto ">
-                            <label class="col-md-4 control-label">Role:</label>
-                            <input id="textinputrole" name="textinput" type="text" placeholder="add role"
-                                class="form-control col-4 input-md">
-
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                        <button type="button" class="btn btn-primary" id="acceptbtn">ยืนยัน</button>
-                    </div>
-                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" id="acceptbtn">ยืนยัน</button>
             </div>
         </div>
     </div>
+</div>
+</div>
+</body>
+
 </body>
 
 </html>
